@@ -238,4 +238,10 @@ button:hover:after {
 .form-control:focus {
   box-shadow: none;
 }
-/*# sourceMappingURL=style.css.map */
+.kiemtra{
+  color: red;
+  font-family: "Montserrat";
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+

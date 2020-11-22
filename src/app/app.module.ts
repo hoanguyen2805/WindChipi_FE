@@ -2,13 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // Service
 import { CategoriesService } from './service/categories.service';
 import { AuthService } from './service/auth.service';
 import { TokenInterceptorService } from './service/interceptor.service';
 
 
+//guard
+import { SignInSignUpGuard } from './guards/signin-signup.guard';
 
 
 // Component
@@ -35,9 +37,10 @@ import { ContactComponent } from './contact/contact.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     CarouselModule.forRoot()
   ],
-  providers: [CategoriesService, AuthService,
+  providers: [CategoriesService, AuthService, SignInSignUpGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

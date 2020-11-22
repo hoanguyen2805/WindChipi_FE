@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   formSignIn: FormGroup;
   returnUrl: String;
-  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
+  constructor( private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.formSignIn = this.fb.group({
@@ -37,6 +37,5 @@ export class LoginComponent implements OnInit {
         }
       }
     )
-    // console.log(this.formSignIn.value);
   }
 }

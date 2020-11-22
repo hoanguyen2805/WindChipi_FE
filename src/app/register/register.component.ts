@@ -12,7 +12,9 @@ import { MustMatch } from './helpers/must-match.validator';
 })
 export class RegisterComponent implements OnInit {
   formSignUp: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(
+    private fb: FormBuilder, private authService: AuthService, private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.formSignUp = this.fb.group({
@@ -21,13 +23,13 @@ export class RegisterComponent implements OnInit {
       password: ["", [Validators.required, Validators.minLength(8)]],
       phone: ["", Validators.required],
       address: ["", Validators.required],
-      confirmPassword: ["", [Validators.required, ]]
+      confirmPassword: ["", [Validators.required]]
     }, {
       validator: MustMatch('password','confirmPassword')
     });
    
   }
-  onSubmit(){
+  onSubmit():void{
       const newUser: Users = new Users();
       newUser.username = this.formSignUp.value.username;
       newUser.email = this.formSignUp.value.email;

@@ -8,27 +8,44 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <input type="text" class="form-control" placeholder="Username" formControlName="username">
             </div>
+            <p *ngIf="formSignUp.controls.username.errors?.required && formSignUp.controls.username.touched"
+                class="kiemtra">Username không được để trống</p>
             <div class="form-holder">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <input type="text" class="form-control" placeholder="Mail" formControlName="email">
             </div>
+            <p *ngIf="formSignUp.controls.email.errors?.required && formSignUp.controls.email.touched" class="kiemtra">
+                Email không được để trống</p>
             <div class="form-holder">
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <input type="password" class="form-control" placeholder="Password" formControlName="password">
             </div>
+            <p *ngIf="formSignUp.controls.password.errors?.required && formSignUp.controls.password.touched"
+                class="kiemtra">Password không được để trống</p>
+            <p *ngIf="formSignUp.controls.password.errors?.minlength && formSignUp.controls.password.touched"
+                class="kiemtra">Password phải dài ít nhất 8 ký tự</p>
             <div class="form-holder">
                 <i class="fa fa-lock" aria-hidden="true"></i>
-                <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+                <input type="password" class="form-control" placeholder="Confirm Password"
+                    formControlName="confirmPassword">
             </div>
+            <p *ngIf="formSignUp.controls.confirmPassword.errors?.required && formSignUp.controls.confirmPassword.touched"
+                class="kiemtra">Confirm Password không được để trống</p>
+            <p *ngIf="formSignUp.controls.confirmPassword.errors?.mustMatch && formSignUp.controls.confirmPassword.touched"
+                class="kiemtra">Confirm Password phải nhập giống Password</p>
             <div class="form-holder">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
             </div>
+            <p *ngIf="formSignUp.controls.phone.errors?.required && formSignUp.controls.phone.touched" class="kiemtra">
+                Số điện thoại không được để trống</p>
             <div class="form-holder">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <input type="text" class="form-control" placeholder="Address" formControlName="address">
             </div>
-            <button [disabled] = "formSignUp.invalid">
+            <p *ngIf="formSignUp.controls.address.errors?.required && formSignUp.controls.address.touched"
+                class="kiemtra">Địa chỉ không được để trống</p>
+            <button [disabled]="formSignUp.invalid">
                 <span>Đăng ký</span>
             </button>
         </form>

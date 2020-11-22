@@ -1,0 +1,60 @@
+<header class="header">
+    <section class="top-bar">
+        <div class="container_w">
+            <div class="row_w">
+                <div class="col_w">
+                    <div class="top-bar__nameshop">
+                        <a routerLink="/home">WindChipi</a>
+                        <p>Shop uy tín chất lượng</p>
+                    </div>
+                </div>
+                <div class="col_w">
+                    <div class="top-bar__search">
+                        <form action="">
+                            <select name="" id="">
+                                <option value="all" selected="selected">All</option>
+                                <option value="ao">Áo</option>
+                                <option value="quan">Quần</option>
+                                <option value="mu">Mũ</option>
+                            </select>
+                            <input type="text" placeholder="Tìm sản phẩm ..." name="search" />
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col_w">
+                    <div class="top-bar__cart">
+                        <a href="" class="login">$0.00&emsp;<i class="fa fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav class="top-nav">
+        <div class="container_w">
+            <ul class="top-nav__menu" id="mySidenav">
+                <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">X</a></li>
+                <li><a routerLink="/home" routerLinkActive="active"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fa fa-list" aria-hidden="true"></i> SẢN PHẨM <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a routerLink="/categories/{{item.id}}" *ngFor="let item of listCategories">
+                            {{item.name}}
+                        </a>
+                        <!-- <a href="">ÁO</a>
+                        <a href="">QUẦN</a>
+                        <a href="">MŨ</a>
+                        <a href="">KÍNH</a> -->
+                    </div>
+                </div>
+                <li><a routerLink="/contact-us" routerLinkActive="active"><i class="fa fa-envelope"></i> LIÊN HỆ</a></li>
+                <li *ngIf="isLogged"><a routerLink="/account" routerLinkActive="active"><i class="fa fa-user" aria-hidden="true"></i> TÀI KHOẢN</a></li>
+                <li *ngIf="isLogged" (click)="logout()"><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> ĐĂNG XUẤT</a></li>
+                <li *ngIf="!isLogged"><a routerLink="/login" routerLinkActive="active"><i class="fa fa-sign-in" aria-hidden="true"></i> ĐĂNG NHẬP</a></li>
+                <li *ngIf="!isLogged"><a routerLink="/register" routerLinkActive="active"><i class="fa fa-user-plus" aria-hidden="true"></i> ĐĂNG KÝ</a></li>
+            </ul>
+            <span class="icon" (click)="openNav()"><i class="fa fa-bars"></i></span>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="wrapper">
+    <div class="inner">
+        <img src="/assets/images/image-1.png" alt="" class="image-1">
+        <form [formGroup]="formSignUp" (ngSubmit)="onSubmit()">
+            <h3>TÀI KHOẢN MỚI?</h3>
+            <div class="form-holder">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" class="form-control" placeholder="Username" formControlName="username">
+            </div>
+            <div class="form-holder">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <input type="text" class="form-control" placeholder="Mail" formControlName="email">
+            </div>
+            <div class="form-holder">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            </div>
+            <div class="form-holder">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+            </div>
+            <div class="form-holder">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
+            </div>
+            <div class="form-holder">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <input type="text" class="form-control" placeholder="Address" formControlName="address">
+            </div>
+            <button [disabled] = "formSignUp.invalid">
+                <span>Đăng ký</span>
+            </button>
+        </form>
+        <img src="assets/images/image-2.png" alt="" class="image-2">
+    </div>
+</div>

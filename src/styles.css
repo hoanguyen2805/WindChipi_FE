@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: "Montserrat";
+}
+html {
+  font-size: 62.5%;
+}
+* {
+  box-sizing: border-box;
+}
+.container_w {
+  width: 78%;
+  margin: 0 auto;
+}
+.container-fluid_w {
+  width: 100%;
+}

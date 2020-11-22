@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "WindChipi"
+    }
+  },
+  "defaultProject": "WindChipi",
+  "cli": {
+    "analytics": false
+  }
 }

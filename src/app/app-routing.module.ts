@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 // guard
 import { SignInSignUpGuard } from './guards/signin-signup.guard';
-
+import { AuthAdminGuard } from './guards/auth-admin.guard';
+import { AuthUserGuard } from './guards/auth-user.guard';
 
 import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, canActivate: [SignInSignUpGuard]},
-  {path: 'account', component: AccountComponent},
+  {path: 'account', component: AccountComponent, canActivate: [AuthUserGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [SignInSignUpGuard]},
   {path: 'contact-us', component: ContactComponent}
 ];

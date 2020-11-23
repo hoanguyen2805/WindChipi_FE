@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       newUser.password = this.formSignUp.value.password;
       newUser.phone = this.formSignUp.value.phone;
       newUser.address = this.formSignUp.value.address;
-      newUser.role = ["user"];
+      newUser.roles = ["user"];
       console.log(newUser);
       this.authService.register(newUser).subscribe(
         res=>{

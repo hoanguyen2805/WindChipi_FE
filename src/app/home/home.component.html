@@ -1,29 +1,14 @@
 <app-header></app-header>
 <main class="main">
 
-
     <section class="carousel">
         <div class="container-fluid_w">
             <carousel>
-                <slide>
-                    <img src="../../assets/images/2.jpg" alt="first slide" >
+                <slide *ngFor="let item of slider">
+                    <img [src]="item.url" alt="first slide" >
                     <div class="carousel-caption d-none d-md-block">
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </slide>
-                <slide>
-                    <img src="../../assets/images/2.jpg" alt="second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </slide>
-                <slide>
-                    <img src="../../assets/images/2.jpg" alt="third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <!-- <h2>{{item.content}}</h2> -->
+                        <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
                     </div>
                 </slide>
             </carousel>
@@ -221,7 +206,7 @@
         <div class="container">
             <div class="recent-products__title">
                 <p>TÍNH NĂNG NỔI BẬT</p>
-                <span>LÀM CHO CÔNG VIỆC CỦA BẠN DỄ DÀNG VÀ NHANH HƠN</span>
+                <span>GIÚP VIỆC MUA SẮM THOẢI MÁI VÀ AN TOÀN HƠN</span>
             </div>
             <div class="row">
                 <div class="col">

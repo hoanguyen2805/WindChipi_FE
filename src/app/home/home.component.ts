@@ -10,7 +10,11 @@ import { CarouselConfig} from 'ngx-bootstrap/carousel';
   ]
 })
 export class HomeComponent implements OnInit {
-  
+  slider = [
+    {"url":"/assets/images/slider/slide01.jpg"},
+    {"url":"/assets/images/slider/slide02.jpg"},
+    {"url":"/assets/images/slider/slide03.jpg"}
+  ];
   constructor() {}
 
   ngOnInit(): void {

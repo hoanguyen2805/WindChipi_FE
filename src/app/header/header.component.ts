@@ -28,6 +28,6 @@ export class HeaderComponent implements OnInit {
     document.getElementById("mySidenav").style.display = "none";
   }
   logout(){
-    localStorage.removeItem('token');
+    this.authService.logout();
   }
 }

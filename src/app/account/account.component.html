@@ -1,1 +1,37 @@
 <app-header></app-header>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th colspan="2" style="text-align: center;">Thông tin tài khoản</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Username</td>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td>Số điện thoại</td>
+            <td>{{user.phone}}</td>
+        </tr>
+        <tr>
+            <td>Địa chỉ</td>
+            <td>{{user.address}}</td>
+        </tr>
+        <tr>
+            <td>Quyền truy cập</td>
+            <td><span *ngFor="let item of roles">
+                    {{item.name}}
+                </span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button class="btn btn-danger">Cập nhật</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -3,7 +3,7 @@ export class Users{
     username: String;
     email: String;
     password: String;
-    role: String[];
+    roles: String[];
     phone: String;
     address: String;
 }

@@ -7,12 +7,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CategoriesService } from './service/categories.service';
 import { AuthService } from './service/auth.service';
 import { TokenInterceptorService } from './service/interceptor.service';
-
+import { UsersService } from './service/user.service';
 
 //guard
 import { SignInSignUpGuard } from './guards/signin-signup.guard';
-
-
+import { AuthAdminGuard } from './guards/auth-admin.guard';
+import { AuthUserGuard } from './guards/auth-user.guard';
 // Component
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -40,7 +40,7 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     CarouselModule.forRoot()
   ],
-  providers: [CategoriesService, AuthService, SignInSignUpGuard,
+  providers: [CategoriesService, AuthService, UsersService,SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

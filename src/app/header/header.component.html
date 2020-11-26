@@ -36,10 +36,10 @@
                 <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">X</a></li>
                 <li><a routerLink="/home" routerLinkActive="active"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
                 <div class="dropdown">
-                    <button class="dropbtn"><i class="fa fa-list" aria-hidden="true"></i> SẢN PHẨM <i class="fa fa-caret-down"></i>
+                    <button class="dropbtn"><i class="fa fa-list" aria-hidden="true"></i> LOẠI SẢN PHẨM <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a routerLink="/categories/{{item.id}}" *ngFor="let item of listCategories">
+                        <a routerLink="/categories/{{item.id}}" *ngFor="let item of listCategories" routerLinkActive="active">
                             {{item.name}}
                         </a>
                         <!-- <a href="">ÁO</a>

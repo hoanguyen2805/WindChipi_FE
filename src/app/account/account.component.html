@@ -1,4 +1,5 @@
 <app-header></app-header>
+<div class="table-responsive">
 <table class="table table-hover">
     <thead class="thead-dark">
         <tr>
@@ -16,6 +17,10 @@
             <td>{{user.email}}</td>
         </tr>
         <tr>
+            <td>Họ Tên</td>
+            <td>{{user.full_name}}</td>
+        </tr>
+        <tr>
             <td>Số điện thoại</td>
             <td>{{user.phone}}</td>
         </tr>
@@ -24,14 +29,37 @@
             <td>{{user.address}}</td>
         </tr>
         <tr>
-            <td>Quyền truy cập</td>
-            <td><span *ngFor="let item of roles">
-                    {{item.name}}
-                </span></td>
-        </tr>
-        <tr>
             <td></td>
-            <td><button class="btn btn-danger">Cập nhật</button></td>
+            <td>
+                <button type="button" class="btn btn-danger btn-lg" (click)="hien()"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Sửa Đổi
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>
+</div>
+<div id="collapseBasic" [collapse]="isCollapsed">
+    
+    <form (ngSubmit)="onSubmit()" [formGroup]="formUpdate" class="login-form">
+        <h2 style="text-align: center; font-weight: bold;">Thay đổi thông tin tài khoản</h2>
+        <label for="">Họ Tên</label>
+        <input type="text" name="full_Name" placeholder="Full Name" formControlName="fullName" />
+        <p *ngIf="formUpdate.controls.fullName.errors?.required && formUpdate.controls.fullName.touched"
+        class="kiemtra">Họ tên không được để trống</p>
+        
+        <label for="">Số Điện Thoại</label>
+        <input type="text" name="phone" placeholder="Phone" formControlName="phone" />
+        <p *ngIf="formUpdate.controls.phone.errors?.required && formUpdate.controls.phone.touched"
+        class="kiemtra">Số điện thoại không được để trống</p>
+        
+        <label for="">Địa Chỉ</label>
+        <input type="text" name="address" placeholder="Address" formControlName="address" />
+        <p *ngIf="formUpdate.controls.address.errors?.required && formUpdate.controls.address.touched"
+        class="kiemtra">Địa chỉ không được để trống</p>
+
+        <label for="">Mật Khẩu Mới: không đổi thì bỏ qua</label>
+        <input type="password" name="password" placeholder="password" formControlName="password" />
+        <button>CẬP NHẬT</button>
+    </form>
+</div>

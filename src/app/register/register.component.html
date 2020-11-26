@@ -33,6 +33,14 @@
                 class="kiemtra">Confirm Password không được để trống</p>
             <p *ngIf="formSignUp.controls.confirmPassword.errors?.mustMatch && formSignUp.controls.confirmPassword.touched"
                 class="kiemtra">Confirm Password phải nhập giống Password</p>
+
+            <div class="form-holder">
+                <i class="fa fa-id-card" aria-hidden="true"></i>
+                <input type="text" class="form-control" placeholder="Full Name" formControlName="fullName">
+            </div>
+            <p *ngIf="formSignUp.controls.fullName.errors?.required && formSignUp.controls.fullName.touched" class="kiemtra">
+                Họ Tên không được trống</p>
+
             <div class="form-holder">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">

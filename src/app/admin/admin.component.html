@@ -1,0 +1,44 @@
+
+<div class="s-layout">
+    <!-- Sidebar -->
+    <div class="s-layout__sidebar">
+        <a class="s-sidebar__trigger" href="javascript:void(0)">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <nav class="s-sidebar__nav">
+            <ul>
+                <li>
+                    <a class="s-sidebar__nav-link" routerLink="/admin/users-management" routerLinkActive="active">
+                        <i class="fa fa-user" aria-hidden="true"></i><em> Người Dùng</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" routerLink="/admin/categories-management" routerLinkActive="active">
+                        <i class="fa fa-list" aria-hidden="true"></i><em> Loại Sản Phẩm</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" routerLink="/admin/products-management" routerLinkActive="active">
+                        <i class="fa fa-product-hunt"></i><em> Sản Phẩm</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" routerLink="/admin/contacts-management" routerLinkActive="active">
+                        <i class="fa fa-envelope" aria-hidden="true"></i><em> Liên Hệ</em>
+                    </a>
+                </li>
+                <li>
+                    <a class="s-sidebar__nav-link" routerLink="/home" routerLinkActive="active">
+                        <i class="fa fa-home" aria-hidden="true"></i><em> Home</em>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Content -->
+    <main class="s-layout__content">
+        <router-outlet></router-outlet>
+    </main>
+</div>

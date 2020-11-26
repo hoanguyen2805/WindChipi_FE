@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(8)]],
       phone: ["", Validators.required],
+      fullName: ["", Validators.required],
       address: ["", Validators.required],
       confirmPassword: ["", [Validators.required]]
     }, {
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
       newUser.phone = this.formSignUp.value.phone;
       newUser.address = this.formSignUp.value.address;
       newUser.roles = ["user"];
+      newUser.full_name = this.formSignUp.value.fullName;
       console.log(newUser);
       this.authService.register(newUser).subscribe(
         res=>{

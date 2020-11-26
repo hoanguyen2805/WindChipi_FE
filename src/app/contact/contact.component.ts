@@ -21,6 +21,10 @@ export class ContactComponent implements OnInit {
 
   }
   onSubmit() {
+    if(this.formContact.invalid){
+      alert('Chưa nhập đủ các thông tin!')
+      return;
+    }
     const newContact: Contacts = new Contacts();
     var dt = new Date();
 

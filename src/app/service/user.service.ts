@@ -13,4 +13,10 @@ export class UsersService{
             catchError(err=>of(null))
         )
     }
+    updateUser(user: Users):Observable<any>{
+        return this.http.patch('http://localhost:8080/api/users/user', user).pipe(
+            tap(res=> console.log(res)),
+            catchError(err=>of(new Users()))
+        )
+    }
 }

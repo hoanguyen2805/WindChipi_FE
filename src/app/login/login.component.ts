@@ -27,7 +27,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('roles', res.roles);
         console.log(`Đăng nhập thành công: ${JSON.stringify(res)}`);
-        this.router.navigate([this.returnUrl]);
+        if(this.authService.getRoles().includes("ROLE_ADMIN")){
+          this.router.navigate(['/admin']);
+        }
+        else{
+          this.router.navigate([this.returnUrl]);
+        }
+        
       },
       err => {
         console.log(err);

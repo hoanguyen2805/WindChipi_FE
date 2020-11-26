@@ -1,19 +1,155 @@
 table {
-    font-size: 18px;
-    width: 60%;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 35px;
-    box-shadow: 11px 14px 5px 0px rgba(214,214,214,0.75);
--webkit-box-shadow: 11px 14px 5px 0px rgba(214,214,214,0.75);
--moz-box-shadow: 11px 14px 5px 0px rgba(214,214,214,0.75);
+  font-size: 18px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 35px;
+  box-shadow: 11px 14px 5px 0px rgba(214, 214, 214, 0.75);
+  -webkit-box-shadow: 11px 14px 5px 0px rgba(214, 214, 214, 0.75);
+  -moz-box-shadow: 11px 14px 5px 0px rgba(214, 214, 214, 0.75);
 }
-button{
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    font-size: 18px;
+button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 18px;
 }
-tr:last-of-type:hover{
-    background-color: #ffffff;
+tr:last-of-type:hover {
+  background-color: #ffffff;
+}
+
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"); */
+:root {
+  --primary: #08aeea;
+  --secondary: #13d2b8;
+  --purple: #bd93f9;
+  --pink: #ff6bcb;
+  --blue: #8be9fd;
+  --gray: #333;
+  --font: "Poppins", sans-serif;
+  --gradient: linear-gradient(40deg, #ff6ec4, #7873f5);
+  --shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 1.4rem;
+  overflow-x: hidden;
+  font-weight: 300;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font);
+  font-size: 1.4rem;
+  font-weight: 300;
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.login-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+.login-form input {
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  color: #333;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  display: block;
+  width: 100%;
+  transition: border 0.25s linear;
+  font-weight: normal;
+}
+.login-form input:focus {
+  border-color: var(--primary);
+}
+.login-form .forgot {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.login-form button {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 4px;
+  color: white;
+  background-color: var(--primary);
+  text-transform: uppercase;
+}
+.login-form .input-icon {
+  position: relative;
+}
+.login-form .input-icon input {
+  padding-right: 4rem;
+}
+.login-form .input-icon i {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  color: #ccc;
+  cursor: pointer;
+}
+form{
+  -webkit-box-shadow: 7px 5px 12px 0px rgba(128, 133, 154, 0.71);
+-moz-box-shadow:    7px 5px 12px 0px rgba(128, 133, 154, 0.71);
+box-shadow:         7px 5px 12px 0px rgba(128, 133, 154, 0.71);
+}
+label{
+  font-size: 16px;
+  font-weight: bold;
+}
+input{
+  font-size: 18px;
+}
+#collapseBasic{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.kiemtra{
+  color: red;
+  font-family: "Montserrat";
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: 992px) {
+  .login-form{
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .login-form{
+    width: 94%;
+  }
 }

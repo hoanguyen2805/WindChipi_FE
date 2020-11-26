@@ -6,7 +6,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // Module của ngx-bootstrap
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 // Service
 import { CategoriesService } from './service/categories.service';
@@ -26,6 +27,13 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { DetailProductComponent } from './detail-product/detail-product.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { ProductManagementComponent } from './product-management/product-management.component';
+import { CategoryManagementComponent } from './category-management/category-management.component';
+import { ContactManagementComponent } from './contact-management/contact-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +42,14 @@ import { ContactComponent } from './contact/contact.component';
     LoginComponent,
     AccountComponent,
     RegisterComponent,
-    ContactComponent
+    ContactComponent,
+    CategoriesComponent,
+    DetailProductComponent,
+    AdminComponent,
+    UserManagementComponent,
+    ProductManagementComponent,
+    CategoryManagementComponent,
+    ContactManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +58,9 @@ import { ContactComponent } from './contact/contact.component';
     ReactiveFormsModule,
     FormsModule,
     CarouselModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    CollapseModule.forRoot()
   ],
   providers: [CategoriesService, AuthService, UsersService, ContactService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
   {

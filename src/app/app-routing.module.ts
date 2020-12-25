@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { CategoryManagementComponent } from './category-management/category-management.component';
+import { SearchProductsComponent } from './search-products/search-products.component';
 import { ContactManagementComponent } from './contact-management/contact-management.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -26,6 +27,8 @@ const routes: Routes = [
   {path: 'contact-us', component: ContactComponent},
   {path: 'categories/:id', component: CategoriesComponent},
   {path: 'detail-product/:id', component: DetailProductComponent},
+  {path: 'search-products/:category/:keyword', component: SearchProductsComponent},
+  {path: 'search-products/:category', component: SearchProductsComponent},
   {
     path: 'admin', component: AdminComponent,
     children:[

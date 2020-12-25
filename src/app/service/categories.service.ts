@@ -10,4 +10,11 @@ export class CategoriesService{
     getCategories(): Observable<Categories[]>{
         return this.http.get<Categories[]>('http://localhost:8080/api/categories/list')
     }
+
+    getProductsByCategory(id: String):Observable<Categories>{
+        return this.http.get<Categories>(`http://localhost:8080/api/categories/${id}`).pipe(
+            tap(res => console.log(JSON.stringify(res))),
+            catchError(err => of(null))
+        )
+    }
 }

@@ -10,14 +10,15 @@
                 </div>
                 <div class="col_w">
                     <div class="top-bar__search">
-                        <form action="">
-                            <select name="" id="">
-                                <option value="all" selected="selected">All</option>
-                                <option value="ao">Áo</option>
-                                <option value="quan">Quần</option>
-                                <option value="mu">Mũ</option>
+                        <form (ngSubmit)="onSubmitSearch();" [formGroup]="formSearch">
+                            <select name="" id="" formControlName="category">
+                                <option value="0">All</option>
+                                <ng-template ngFor [ngForOf]="listCategories" let-item>
+                                    <option [value]="item.id">{{item.name}}</option>
+                                </ng-template>
+                                
                             </select>
-                            <input type="text" placeholder="Tìm sản phẩm ..." name="search" />
+                            <input type="text" placeholder="Tìm sản phẩm ..." name="search" formControlName="keyword" />
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>

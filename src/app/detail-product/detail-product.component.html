@@ -1,2 +1,95 @@
 <app-header></app-header>
-<p>detail-product works!</p>
+<main>
+    <section class="section-detail">
+        <div class="container_w">
+            <div class="row_w">
+                <div class="col_w">
+                    <div class="hang">
+                        <div class="thunghang">
+                            <img id="expandedImg" style="width:100%" src="../../assets/images/img_nature.jpg">
+                        </div>
+                        <div class="cot">
+                            <img src="../../assets/images/img_nature.jpg" alt="Nature" style="width:100%"
+                                (click)="myFunction($event);">
+                        </div>
+                        <div class="cot">
+                            <img src="../../assets/images/img_snow.jpg" alt="Snow" style="width:100%"
+                                (click)="myFunction($event);">
+                        </div>
+                        <div class="cot">
+                            <img src="../../assets/images/img_mountains.jpg" alt="Mountains" style="width:100%"
+                                (click)="myFunction($event);">
+                        </div>
+                        <div class="cot">
+                            <img src="../../assets/images/img_lights.jpg" alt="Lights" style="width:100%"
+                                (click)="myFunction($event);">
+                        </div>
+                    </div>
+                </div>
+                <div class="col_w">
+                    <div class="info">
+                        <p>{{product.name}}</p>
+                        <p>{{product.price}}<span>đ</span></p>
+                        <hr>
+                        <p>Hiện tại còn {{product.total}} sản phẩm.</p>
+                        <button class="nut" (click)="giam()">-</button><input type="number" [value]="soLuong"
+                            readonly><button class="nut" (click)="tang()">+</button>
+                        <button class="mua den">
+                            THÊM VÀO GIỎ
+                        </button>
+                        <button class="mua do">
+                            MUA NGAY
+                        </button>
+                        <p class="describe">{{product.describe}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured-products">
+        <div class="container_w">
+            <div class="featured-products__title">
+                <p>SẢN PHẨM LIÊN QUAN
+                </p>
+            </div>
+            <div class="row_w">
+                <div class="col_w" *ngFor="let item of relatedProducts">
+                    <a routerLink="/detail-product/{{item.id}}">
+                        <div class="featured-product__img">
+                            <img src="../../assets/images/hoodie-with-zipper-2-500x500.jpg" alt="" width="100%">
+                            <div class="overlay">
+                                <p>{{item.name}}</p>
+                                <p>{{item.price}}<span>đ</span></p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-comment">
+        <div class="container_w" style="font-size: 22px; margin-top: 50px; margin-bottom: 50px;">
+            <tabset>
+                <tab heading="Bình Luận" id="tab1">
+                    <div class="comment" *ngFor="let comment of comments">
+                        <img src="../../assets/images/img_avatar.png" alt="Avatar" class="avatar">
+                        <div class="comment__content">
+                            <div>
+                                <h4>{{comment.username}}</h4>
+                                <span>{{comment.date_created}}</span>
+                            </div>
+                            <p>{{comment.comment_content}}</p>
+                        </div>
+                    </div>
+                </tab>
+                <tab heading="Thêm Bình Luận">
+                    <div class="save_comment">
+                        <textarea id="content" rows="5" #content ></textarea>
+                        <button (click)="saveComment(content.value)" class="btn btn-danger">Gửi Bình Luận</button>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </section>
+</main>

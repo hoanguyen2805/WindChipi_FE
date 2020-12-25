@@ -1,1 +1,105 @@
-<p>contact-management works!</p>
+<!-- <h3>Contact Management</h3>
+<div class="responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of contacts">
+                <td>{{item.id}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.full_name}}</td>
+                <td class="max-hidden">{{item.message}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.date_created}}</td>
+                <td>
+                    <a href=""><i class="fa fa-edit" style="font-size:22px; color: blue;"></i></a>
+                    &nbsp;&nbsp;
+                    <a href=""><i class="fa fa-remove" style="color: red; font-size: 22px;"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+
+
+<div class="table">
+    <table>
+        <thead>
+            <tr>
+                <th>Project name</th>
+                <th>Contact person</th>
+                <th>Project lead</th>
+                <th>Team</th>
+                <th>Progress</th>
+                <th>Deadline</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="image-text">
+                        <img src="/images/unicorn.png" alt="">
+                        <span>Rachel</span>
+                    </div>
+                </td>
+                <td>Mike wazowski</td>
+                <td>Mike Dawson</td>
+                <td>
+                    <div class="image-list">
+                        <img src="/images/outer-space.png" alt="">
+                        <img src="/images/rachelizmarvel.png" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div class="progress">
+                        <div class="percent"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tag">12 days left</div>
+                </td>
+                <td>
+                    <i class="fal fa-ellipsis-h action"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="image-text">
+                        <img src="/images/logo.png" alt="">
+                        <span>Evondev</span>
+                    </div>
+                </td>
+                <td>Mike wazowski</td>
+                <td>Mike Dawson</td>
+                <td>
+                    <div class="image-list">
+                        <img src="/images/outer-space.png" alt="">
+                        <img src="/images/rachelizmarvel.png" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div class="progress">
+                        <div class="percent" style="background-color: var(--purple);width: 75%"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tag">12 days left</div>
+                </td>
+                <td>
+                    <i class="fal fa-ellipsis-h action"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

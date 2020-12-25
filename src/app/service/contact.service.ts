@@ -10,4 +10,11 @@ export class ContactService{
     createContact(contact: Contacts):Observable<any>{
         return this.http.post<any>('http://localhost:8080/api/contacts/contact',contact);
     }
+
+    getContacts():Observable<Contacts[]>{
+        return this.http.get<Contacts[]>('http://localhost:8080/api/contacts/contacts').pipe(
+            tap(res => console.log(`${JSON.stringify(res)}`)),
+            catchError(error => of([]))
+        );
+    }
 }

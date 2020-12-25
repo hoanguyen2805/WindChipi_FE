@@ -5,10 +5,8 @@
         <div class="container-fluid_w">
             <carousel>
                 <slide *ngFor="let item of slider">
-                    <img [src]="item.url" alt="first slide" >
+                    <img [src]="item.url" alt="first slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <!-- <h2>{{item.content}}</h2> -->
-                        <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
                     </div>
                 </slide>
             </carousel>
@@ -18,53 +16,20 @@
 
 
     <section class="featured-products">
-        <div class="container">
+        <div class="container_w">
             <div class="featured-products__title">
                 <p>SẢN PHẨM NỔI BẬT</p>
                 <span>TỐT NHẤT TỪ SHOP</span>
             </div>
-            <div class="row">
-                <div class="col">
-                    <a href="#">
+            <div class="row_w">
+                <div class="col_w" *ngFor="let phantu of hotProducts">
+                    <a routerLink="/detail-product/{{phantu.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/hoodie-with-zipper-2-500x500.jpg" alt="">
+                            <img src="../../assets/images/hoodie-with-zipper-2-500x500.jpg" alt="" width="100%">
                             <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Áo khoác</p>
-                                    <p>HOODIE WITH ZIPPER</p>
-                                    <p>$45.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/cap-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Mũ lưỡi trai</p>
-                                    <p>CAP</p>
-                                    <p>$25.00</p>
-                                    <button>Add to cart</button>
-                                </div>
+                                <p>{{phantu.name}}</p>
+                                <p>{{phantu.price}}<span>đ</span></p>
+                                <button>Add to cart</button>
                             </div>
                         </div>
                     </a>
@@ -73,128 +38,20 @@
         </div>
     </section>
     <section class="recent-products">
-        <div class="container">
+        <div class="container_w">
             <div class="recent-products__title">
                 <p>SẢN PHẨM MỚI</p>
                 <span>XU HƯỚNG CỦA NĂM NAY</span>
             </div>
-            <div class="row">
-                <div class="col">
-                    <a href="#">
+            <div class="row_w">
+                <div class="col_w" *ngFor="let item of newProducts">
+                    <a routerLink="/detail-product/{{item.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
+                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="" width="100%">
                             <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="">
-                            <div class="overlay">
-                                <div class="featured-product__content">
-                                    <p>Kính mát</p>
-                                    <p>SUNGLASSES</p>
-                                    <p>$90.00</p>
-                                    <button>Add to cart</button>
-                                </div>
+                                <p>{{item.name}}</p>
+                                <p>{{item.price}}<span>đ</span></p>
+                                <button>Add to cart</button>
                             </div>
                         </div>
                     </a>
@@ -203,26 +60,26 @@
         </div>
     </section>
     <section class="highlighted-features">
-        <div class="container">
+        <div class="container_w">
             <div class="recent-products__title">
                 <p>TÍNH NĂNG NỔI BẬT</p>
                 <span>GIÚP VIỆC MUA SẮM THOẢI MÁI VÀ AN TOÀN HƠN</span>
             </div>
-            <div class="row">
-                <div class="col">
+            <div class="row_w">
+                <div class="col_w">
                     <div class="highlighted-features__freeship">
                         <p><i class="fa fa-car" aria-hidden="true"></i> MiỄN PHÍ VẬN CHUYỂN</p>
                         <p>Miễn phí vận chuyển khi đơn hàng đạt giá trị tối thiểu là 200000đ</p>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col_w">
                     <div class="highlighted-features__backquarantee">
                         <p><i class="fa fa-undo"></i> 30 NGÀY ĐỔI TRẢ</p>
                         <p>Cho phép đổi trả hàng nếu không ưng ý với điều kiện sản phẩm còn nhãn mác và không hư hại
                         </p>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col_w">
                     <div class="highlighted-features__checkout">
                         <p><i class="fa fa-check" aria-hidden="true"></i> KIỂM TRA SẢN PHẨM</p>
                         <p>Được kiểm tra sản phẩm trước khi nhận, nếu không muốn nhận có thể trả hàng</p>

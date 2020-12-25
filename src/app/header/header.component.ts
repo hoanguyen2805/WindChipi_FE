@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Categories } from '../models/categories';
 import { CategoriesService } from '../service/categories.service';
 import { AuthService } from "../service/auth.service";
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,24 +12,42 @@ import { AuthService } from "../service/auth.service";
 export class HeaderComponent implements OnInit {
   isLogged: boolean;
   listCategories: Categories[];
-  constructor(private categoriesService: CategoriesService, private authService: AuthService ) { }
+  formSearch: FormGroup;
+  constructor(private categoriesService: CategoriesService, private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.getCategories();
     this.isLogged = this.authService.loggedIn();
+    this.formSearch = this.fb.group({
+      category: ['0'],
+      keyword: ['']
+    })
   }
-  getCategories():void{
+  getCategories(): void {
     this.categoriesService.getCategories().subscribe(
-      res => this.listCategories = res
+      res => {
+        this.listCategories = res;
+        // console.log(res);
+      }
     )
   }
   openNav() {
-      document.getElementById("mySidenav").style.display = "flex";
+    document.getElementById("mySidenav").style.display = "flex";
   }
-  closeNav(){
+  closeNav() {
     document.getElementById("mySidenav").style.display = "none";
   }
-  logout(){
+  logout() {
     this.authService.logout();
+  }
+  onSubmitSearch() {
+    const category = this.formSearch.value.category;
+    const keyword = this.formSearch.value.keyword;
+    if (keyword) {
+      this.router.navigate([`/search-products/${category}/${keyword}`]);
+    }
+    else{
+      this.router.navigate([`/search-products/${category}`]);
+    }
   }
 }

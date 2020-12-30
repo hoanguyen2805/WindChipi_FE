@@ -9,7 +9,7 @@ export class CommentService {
     constructor(private http: HttpClient, private router: Router) { }
     getCommentByProductId(product_id: String): Observable<Comments[]> {
         return this.http.get<Comments[]>(`http://localhost:8080/api/comments/listbyproductid/${product_id}`).pipe(
-            tap(res => console.log(`${JSON.stringify(res)}`)),
+            // tap(res => console.log(`${JSON.stringify(res)}`)),
             catchError(error => of([]))
         );
     }

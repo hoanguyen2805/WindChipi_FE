@@ -1,0 +1,87 @@
+.order-product {
+  font-size: 1.5rem;
+}
+.info-user > p {
+  margin-top: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.info-user th {
+  font-weight: 700;
+}
+.nut{
+  font-size: 1.5rem;
+}
+.info-order > p {
+  margin-top: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.payment-method > p:first-child {
+  margin-top: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.payment-method > p:last-child {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 1200px) {
+  .container_w {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .container_w {
+    width: 90%;
+  }
+  .order-product {
+    font-size: 1.4rem;
+  }
+  .info-user > p,
+  .info-order > p,
+  .payment-method > p:first-child {
+    font-size: 2rem;
+  }
+  .payment-method > p:last-child {
+    margin-left: 26px;
+  }
+  .nut{
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .order-product {
+    font-size: 1.3rem;
+  }
+  .info-user > p,
+  .info-order > p,
+  .payment-method > p:first-child {
+    font-size: 1.8rem;
+  }
+  .payment-method > p:last-child {
+    margin-left: 24px;
+  }
+  .nut{
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .container_w {
+    width: 95%;
+  }
+  .order-product {
+    font-size: 1.2rem;
+  }
+  .info-user > p,
+  .info-order > p,
+  .payment-method > p:first-child {
+    font-size: 1.6rem;
+  }
+  .payment-method > p:last-child {
+    margin-left: 20px;
+  }
+  .nut{
+    font-size: 1.2rem;
+  }
+}

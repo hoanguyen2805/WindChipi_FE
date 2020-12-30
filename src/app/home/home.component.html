@@ -25,11 +25,11 @@
                 <div class="col_w" *ngFor="let phantu of hotProducts">
                     <a routerLink="/detail-product/{{phantu.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/hoodie-with-zipper-2-500x500.jpg" alt="" width="100%">
+                            <img src="../../assets/images/product/product01.jpg" alt="" width="100%">
                             <div class="overlay">
                                 <p>{{phantu.name}}</p>
-                                <p>{{phantu.price}}<span>đ</span></p>
-                                <button>Add to cart</button>
+                                <p>{{phantu.price | number: '2.'}}<span>đ</span></p>
+                                <button>Chi tiết</button>
                             </div>
                         </div>
                     </a>
@@ -47,11 +47,11 @@
                 <div class="col_w" *ngFor="let item of newProducts">
                     <a routerLink="/detail-product/{{item.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/sunglasses-2-500x500.jpg" alt="" width="100%">
+                            <img src="../../assets/images/product/product02.jpg" alt="" width="100%">
                             <div class="overlay">
                                 <p>{{item.name}}</p>
-                                <p>{{item.price}}<span>đ</span></p>
-                                <button>Add to cart</button>
+                                <p>{{item.price | number: '2.'}}<span>đ</span></p>
+                                <button>Chi tiết</button>
                             </div>
                         </div>
                     </a>

@@ -4,6 +4,7 @@ import { ProductService } from '../service/product.service';
 import { CommentService } from '../service/comment.service';
 import { Products } from '../models/product';
 import { Comments } from '../models/comment';
+import { OrderService } from '../service/order.servive';
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
@@ -15,19 +16,24 @@ export class DetailProductComponent implements OnInit {
   product: Products = new Products();
   soLuong: number = 1;
   relatedProducts: Products[] = new Array();
-  constructor(private route: ActivatedRoute, private productService: ProductService, private commentService: CommentService) { }
+  listCart = new Array();
+  constructor(private route: ActivatedRoute, private productService: ProductService,
+    private commentService: CommentService, private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id: number = +params.get('id');
-      this.productService.getProductById(id).subscribe(
-        res => {
-          this.product = res;
-          this.getRelatedProducts(this.product.categories_id.toString(), this.product.id.toString());
-          this.getCommentByProductId(this.product.id.toString());
-        }
-      )
+      this.getProductById(id);
     })
+  }
+  getProductById(id: number){
+    this.productService.getProductById(id).subscribe(
+      res => {
+        this.product = res;
+        this.getRelatedProducts(this.product.categories_id.toString(), this.product.id.toString());
+        this.getCommentByProductId(this.product.id.toString());
+      }
+    )
   }
   getRelatedProducts(category_id: String, product_id: String){
     this.productService.getRelatedProducts(category_id, product_id).subscribe(
@@ -80,6 +86,35 @@ export class DetailProductComponent implements OnInit {
           this.textarea.nativeElement.value = "";
         }
       )
+    }
+    else{
+      alert("Hãy đăng nhập!");
+      return;
+    }
+  }
+
+  addCart(){
+    if (!!localStorage.getItem('cart')){
+      this.listCart = JSON.parse(localStorage.getItem('cart'));
+      this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "name": this.product.name});
+      localStorage.setItem("cart", JSON.stringify(this.listCart));
+      alert("Thành Công!");
+    }
+    else{
+      this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "name": this.product.name});
+      localStorage.setItem("cart", JSON.stringify(this.listCart));
+      alert("Thành Công!");
+    }
+  }
+  order(){
+    if(!!localStorage.getItem('token')){
+    this.orderService.save(+this.product.id, this.soLuong).subscribe(
+      res => {
+        alert("Thành công!");
+        this.getProductById(+this.product.id);
+        this.soLuong = 1;
+      }
+    )
     }
     else{
       alert("Hãy đăng nhập!");

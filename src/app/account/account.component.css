@@ -1,5 +1,5 @@
 table {
-  font-size: 18px;
+  font-size: 1.5rem;
   width: 60%;
   margin: 0 auto;
   margin-top: 20px;
@@ -12,7 +12,7 @@ button {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 tr:last-of-type:hover {
   background-color: #ffffff;
@@ -59,7 +59,7 @@ input,
 textarea,
 select {
   font-family: var(--font);
-  font-size: 1.4rem;
+  font-size: 15px;
   font-weight: 300;
   outline: none;
   border: 0;
@@ -102,10 +102,10 @@ button {
 }
 .login-form button {
   width: 100%;
-  padding: 1.5rem;
+  padding: 10px;
   border-radius: 4px;
-  color: white;
-  background-color: var(--primary);
+  /* color: white; */
+  /* background-color: var(--primary); */
   text-transform: uppercase;
 }
 .login-form .input-icon {
@@ -128,11 +128,11 @@ form{
 box-shadow:         7px 5px 12px 0px rgba(128, 133, 154, 0.71);
 }
 label{
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
 }
 input{
-  font-size: 18px;
+  font-size: 15px;
 }
 #collapseBasic{
   margin-top: 30px;
@@ -143,13 +143,29 @@ input{
   font-family: "Montserrat";
   padding-bottom: 10px;
 }
+@media only screen and (max-width: 1200px) {
+  .container_w {
+    width: 85%;
+  }
+}
 @media only screen and (max-width: 992px) {
   .login-form{
-    width: 80%;
+    width: 90%;
+  }
+  table button{
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  table button{
+    font-size: 13px;
   }
 }
 @media only screen and (max-width: 480px) {
   .login-form{
-    width: 94%;
+    width: 95%;
+  }
+  td button{
+    font-size: 12px;
   }
 }

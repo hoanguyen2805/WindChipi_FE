@@ -18,6 +18,7 @@ import { UsersService } from './service/user.service';
 import { ContactService } from './service/contact.service';
 import { ProductService } from './service/product.service';
 import { CommentService } from './service/comment.service';
+import { OrderService } from './service/order.servive';
 //guard
 import { SignInSignUpGuard } from './guards/signin-signup.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
@@ -38,6 +39,8 @@ import { ProductManagementComponent } from './product-management/product-managem
 import { CategoryManagementComponent } from './category-management/category-management.component';
 import { ContactManagementComponent } from './contact-management/contact-management.component';
 import { SearchProductsComponent } from './search-products/search-products.component';
+import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +57,9 @@ import { SearchProductsComponent } from './search-products/search-products.compo
     ProductManagementComponent,
     CategoryManagementComponent,
     ContactManagementComponent,
-    SearchProductsComponent
+    SearchProductsComponent,
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,7 @@ import { SearchProductsComponent } from './search-products/search-products.compo
     PaginationModule.forRoot(),
     TabsModule.forRoot()
   ],
-  providers: [CategoriesService, AuthService, UsersService, ContactService, ProductService, CommentService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
+  providers: [CategoriesService, AuthService, UsersService, ContactService, ProductService, CommentService, OrderService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

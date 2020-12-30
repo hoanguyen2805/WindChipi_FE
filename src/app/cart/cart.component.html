@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+
+<main>
+    <section class="cart-product">
+        <div class="container_w">
+            <h3>Giỏ hàng của bạn</h3>
+            <h5 *ngIf="listCart.length == 0" style="text-align: center; font-size: 1.8rem; margin-bottom: 30px;">
+                Có 0 sản phẩm trong giỏ hàng
+            </h5>
+            <div class="table-responsive" *ngIf="listCart.length != 0">
+                <table class="table table-striped" >
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" colspan="1">Sản phẩm</th>
+                            <th></th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng tiền</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of listCart; index as idx">
+                            <th scope="row">{{idx+1}}</th>
+                            <td >
+                                <img src="../../assets/images/product/product01.jpg" alt="">
+                                
+                            </td>
+                            <td><a routerLink="/detail-product/{{cart.product_id}}">{{cart.name}}</a></td>
+                            <td>{{cart.price | number: '2.'}}<span>đ</span></td>
+                            <td>
+                                <input type="number" [value]="cart.so_luong" style="width: 50px; text-align: center;" #total>
+                                <!-- {{cart.so_luong}} -->
+                            </td>
+                            <td>{{cart.so_luong*cart.price | number: '2.'}}<span>đ</span></td>
+                            <td>    
+                                <button (click)="order(idx, total.value)" class="btn btn-success">ĐẶT HÀNG</button>
+                                &nbsp;
+                                <button (click)="update(idx, total.value)" class="btn btn-primary">CẬP NHẬT</button>
+                                &nbsp;
+                                <button (click)="xoa(idx)" class="btn btn-danger">XÓA</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p *ngIf="tongtien != 0" style="font-size: 1.5rem; font-weight: 800;">Tổng tiền: {{tongtien | number: '2.'}}<span>đ</span></p>
+        </div>
+    </section>
+</main>

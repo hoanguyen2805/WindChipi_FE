@@ -1,0 +1,90 @@
+h3 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: 400;
+  color: #212529;
+}
+table {
+  font-size: 1.5rem;
+}
+img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+p {
+  font-size: 1.5rem;
+  text-align: right;
+  margin-right: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+span {
+  text-decoration: underline;
+}
+button {
+  font-size: 1.5rem;
+}
+/* Custom input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+@media only screen and (max-width: 1200px) {
+  .container_w {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .container_w {
+    width: 90%;
+  }
+  button,
+  p,
+  table {
+    font-size: 1.3rem;
+  }
+  h3 {
+    font-size: 3.5rem;
+  }
+  img{
+    width: 75px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  button,
+  p,
+  table {
+    font-size: 1.3rem;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+  img{
+    width: 65px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .container_w {
+    width: 95%;
+  }
+  button,
+  p,
+  table {
+    font-size: 1.2rem;
+  }
+  h3 {
+    font-size: 2.8rem;
+  }
+  img{
+    width: 60px;
+  }
+}

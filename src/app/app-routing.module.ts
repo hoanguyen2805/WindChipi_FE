@@ -18,6 +18,8 @@ import { ProductManagementComponent } from './product-management/product-managem
 import { CategoryManagementComponent } from './category-management/category-management.component';
 import { SearchProductsComponent } from './search-products/search-products.component';
 import { ContactManagementComponent } from './contact-management/contact-management.component';
+import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './orders/orders.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate: [SignInSignUpGuard]},
   {path: 'contact-us', component: ContactComponent},
   {path: 'categories/:id', component: CategoriesComponent},
+  {path: 'shopping-cart', component: CartComponent},
+  {path: 'your-order', component: OrdersComponent, canActivate: [AuthUserGuard]},
   {path: 'detail-product/:id', component: DetailProductComponent},
   {path: 'search-products/:category/:keyword', component: SearchProductsComponent},
   {path: 'search-products/:category', component: SearchProductsComponent},

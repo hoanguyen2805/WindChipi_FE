@@ -5,39 +5,41 @@
             <div class="row_w">
                 <div class="col_w">
                     <div class="hang">
-                        <div class="thunghang">
-                            <img id="expandedImg" style="width:100%" src="../../assets/images/img_nature.jpg">
+                        <div class="cot1">
+                            <div class="cot">
+                                <img src="../../assets/images/product/product01.jpg" alt="Nature" style="width:100%"
+                                    (click)="myFunction($event);">
+                            </div>
+                            <div class="cot">
+                                <img src="../../assets/images/product/product02.jpg" alt="Snow" style="width:100%"
+                                    (click)="myFunction($event);">
+                            </div>
+                            <div class="cot">
+                                <img src="../../assets/images/product/product03.jpg" alt="Mountains" style="width:100%"
+                                    (click)="myFunction($event);">
+                            </div>
+                            <div class="cot">
+                                <img src="../../assets/images/product/product04.jpg" alt="Lights" style="width:100%"
+                                    (click)="myFunction($event);">
+                            </div>
                         </div>
-                        <div class="cot">
-                            <img src="../../assets/images/img_nature.jpg" alt="Nature" style="width:100%"
-                                (click)="myFunction($event);">
-                        </div>
-                        <div class="cot">
-                            <img src="../../assets/images/img_snow.jpg" alt="Snow" style="width:100%"
-                                (click)="myFunction($event);">
-                        </div>
-                        <div class="cot">
-                            <img src="../../assets/images/img_mountains.jpg" alt="Mountains" style="width:100%"
-                                (click)="myFunction($event);">
-                        </div>
-                        <div class="cot">
-                            <img src="../../assets/images/img_lights.jpg" alt="Lights" style="width:100%"
-                                (click)="myFunction($event);">
+                        <div class="cot2">
+                            <img id="expandedImg" style="width:100%; max-height: 800px; object-fit: cover;" src="../../assets/images/product/product01.jpg">
                         </div>
                     </div>
                 </div>
                 <div class="col_w">
                     <div class="info">
                         <p>{{product.name}}</p>
-                        <p>{{product.price}}<span>đ</span></p>
+                        <p>{{product.price | number: '2.'}}<span>đ</span></p>
                         <hr>
                         <p>Hiện tại còn {{product.total}} sản phẩm.</p>
                         <button class="nut" (click)="giam()">-</button><input type="number" [value]="soLuong"
                             readonly><button class="nut" (click)="tang()">+</button>
-                        <button class="mua den">
+                        <button class="mua den" (click)="addCart()">
                             THÊM VÀO GIỎ
                         </button>
-                        <button class="mua do">
+                        <button class="mua do" (click)="order()">
                             MUA NGAY
                         </button>
                         <p class="describe">{{product.describe}}</p>
@@ -59,8 +61,8 @@
                             <img src="../../assets/images/hoodie-with-zipper-2-500x500.jpg" alt="" width="100%">
                             <div class="overlay">
                                 <p>{{item.name}}</p>
-                                <p>{{item.price}}<span>đ</span></p>
-                                <button>Add to cart</button>
+                                <p>{{item.price | number: '2.'}}<span>đ</span></p>
+                                <button>Chi tiết</button>
                             </div>
                         </div>
                     </a>
@@ -69,7 +71,7 @@
         </div>
     </section>
     <section class="section-comment">
-        <div class="container_w" style="font-size: 22px; margin-top: 50px; margin-bottom: 50px;">
+        <div class="container_w" style="font-size: 1.5rem; margin-top: 50px; margin-bottom: 50px;">
             <tabset>
                 <tab heading="Bình Luận" id="tab1">
                     <div class="comment" *ngFor="let comment of comments">
@@ -85,8 +87,8 @@
                 </tab>
                 <tab heading="Thêm Bình Luận">
                     <div class="save_comment">
-                        <textarea id="content" rows="5" #content ></textarea>
-                        <button (click)="saveComment(content.value)" class="btn btn-danger">Gửi Bình Luận</button>
+                        <textarea id="content" rows="5" #content></textarea>
+                        <button (click)="saveComment(content.value)" class="btn btn-danger" style="font-size: 1.5rem;">Gửi Bình Luận</button>
                     </div>
                 </tab>
             </tabset>

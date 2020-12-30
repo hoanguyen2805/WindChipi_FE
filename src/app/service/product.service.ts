@@ -43,4 +43,17 @@ export class ProductService{
             catchError(error => of([]))
         )
     }
+    getProductInCart(arr: String[]):Observable<Products[]>{
+        return this.http.post<Products[]>('http://localhost:8080/api/products/productscart', arr).pipe(
+           tap(res => console.log(JSON.stringify(res))),
+           catchError(error => of([]))
+        )
+    }
+
+    getTotalProduct(id: String):Observable<Number>{
+        return this.http.get<Number>(`http://localhost:8080/api/products/gettotal/${id}`).pipe(
+            tap(res => console.log(JSON.stringify(res))),
+            catchError(error => of(null))
+        )
+    }
 }

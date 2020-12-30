@@ -1,0 +1,70 @@
+<app-header></app-header>
+<main>
+    <section class="order-product">
+        <div class="container_w">
+            <div class="info-user">
+                <p>Địa chỉ giao hàng:</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th scope="row">Họ và tên</th>
+                            <td>{{user.full_name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Số điện thoại</th>
+                            <td>{{user.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Địa chỉ</th>
+                            <td>{{user.address}}</td>
+                        </tr>
+                        <tr>
+                            <th>Thao tác</th>
+                            <td><a routerLink="/account"><button class="btn btn-primary nut">Cập nhật</button></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="info-order">
+                <p>Đơn hàng:</p>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Sản phẩm</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Phí vận chuyển</th>
+                                <th scope="col">Tổng tiền</th>
+                                <th scope="col">Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let order of orders; index as idx">
+                                <td>{{idx + 1}}</td>
+                                <td> <a routerLink="/detail-product/{{order.idProduct}}">{{order.name}}</a></td>
+                                <td>{{order.price | number: '2.'}}<span style="text-decoration: underline;">đ</span></td>
+                                <td>{{order.numberProducts}}</td>
+                                <td>{{order.freightCost | number: '2.'}}<span style="text-decoration: underline;">đ</span></td>
+                                <td>{{order.totalMoney | number: '2.'}}<span style="text-decoration: underline;">đ</span></td>
+                                <td>{{order.dateCreated}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="payment-method">
+                <p>Phương thức thanh toán:</p>
+                <p><input type="checkbox" checked disabled>&nbsp;Thanh toán khi nhận hàng</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+    
+    
+    
+
+    

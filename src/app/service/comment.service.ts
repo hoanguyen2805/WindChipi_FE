@@ -9,13 +9,28 @@ export class CommentService {
     constructor(private http: HttpClient, private router: Router) { }
     getCommentByProductId(product_id: String): Observable<Comments[]> {
         return this.http.get<Comments[]>(`http://localhost:8080/api/comments/listbyproductid/${product_id}`).pipe(
-            // tap(res => console.log(`${JSON.stringify(res)}`)),
             catchError(error => of([]))
         );
     }
     saveComment(comment: Comments): Observable<any> {
         return this.http.post<any>('http://localhost:8080/api/comments/save', comment).pipe(
             tap(res => console.log("Thanh cong")),
+            catchError(err => of(null))
+        )
+    }
+    getSize(): Observable<Comments[]> {
+        return this.http.get<Comments[]>('http://localhost:8080/api/comments/size').pipe(
+            catchError(error => of([]))
+        )
+    }
+    paging(page: number): Observable<Comments[]> {
+        return this.http.get<Comments[]>(`http://localhost:8080/api/comments/page/${page}`).pipe(
+            catchError(error => of([]))
+        )
+    }
+    delete(id: number): Observable<any> {
+        return this.http.delete<any>(`http://localhost:8080/api/comments/${id}`).pipe(
+            tap(res => console.log("Xoa comment thanh cong")),
             catchError(err => of(null))
         )
     }

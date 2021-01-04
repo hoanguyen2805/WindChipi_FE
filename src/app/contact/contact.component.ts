@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
     newContact.email = this.formContact.value.email;
     newContact.phone = this.formContact.value.phone;
     newContact.message = this.formContact.value.message;
-    newContact.date_created = `${dt.getDate().toString().padStart(2, '0')}-${(dt.getMonth() + 1).toString().padStart(2, '0')}-${dt.getFullYear().toString().padStart(4, '0')} ${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}`;   
+    // newContact.date_created = `${dt.getDate().toString().padStart(2, '0')}-${(dt.getMonth() + 1).toString().padStart(2, '0')}-${dt.getFullYear().toString().padStart(4, '0')} ${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}`;   
     this.contactsService.createContact(newContact).subscribe(
       res=> {
         alert('Thành công');

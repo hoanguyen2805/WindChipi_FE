@@ -20,8 +20,8 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get('id');
-      if (+id == 0) {
+      const id:number = +params.get('id');
+      if (id == 0) {
         this.getAllProduct();
       }
       else {
@@ -33,6 +33,11 @@ export class CategoriesComponent implements OnInit {
   getProductsByCategory(id) {
     this.categoryService.getProductsByCategory(id).subscribe(
       res => {
+        if(res == null){
+          this.category.name = "Không tồn tại loại sản phẩm này!";
+          // console.log("bi null");
+          return;
+        }
         this.category = res;
         this.products = res.products;
         this.trang = this.pagenate(this.products, 8, 1);

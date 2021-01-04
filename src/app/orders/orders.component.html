@@ -18,10 +18,6 @@
                             <th scope="row">Địa chỉ</th>
                             <td>{{user.address}}</td>
                         </tr>
-                        <tr>
-                            <th>Thao tác</th>
-                            <td><a routerLink="/account"><button class="btn btn-primary nut">Cập nhật</button></a></td>
-                        </tr>
                     </table>
                 </div>
             </div>
@@ -41,14 +37,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  *ngFor="let order of orders; index as idx">
+                            <tr *ngFor="let order of orders; index as idx">
                                 <td>{{idx + 1}}</td>
                                 <td> <a routerLink="/detail-product/{{order.idProduct}}">{{order.name}}</a></td>
-                                <td>{{order.price | number: '2.'}}<span style="text-decoration: underline;">đ</span></td>
-                                <td>{{order.numberProducts}}</td>
-                                <td>{{order.freightCost | number: '2.'}}<span style="text-decoration: underline;">đ</span></td>
-                                <td>{{order.totalMoney | number: '2.'}}<span style="text-decoration: underline;">đ</span></td>
-                                <td>{{order.dateCreated}}</td>
+                                <td>{{order.price | number: '2.'}}<span style="text-decoration: underline;">đ</span>
+                                </td>
+                                <td>{{order.number_products}}</td>
+                                <td>{{order.freight_cost | number: '2.'}}<span
+                                        style="text-decoration: underline;">đ</span></td>
+                                <td>{{order.total_money | number: '2.'}}<span
+                                        style="text-decoration: underline;">đ</span></td>
+                                <td>{{order.date_created}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,10 +60,3 @@
         </div>
     </section>
 </main>
-
-
-    
-    
-    
-
-    

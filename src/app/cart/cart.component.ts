@@ -34,6 +34,10 @@ export class CartComponent implements OnInit {
     this.tinhTongTien();
   }
   order(id: number, number_products: number) {
+    if(number_products <= 0){
+      alert("Không thể < 1!");
+      return;
+    }
     if (!!localStorage.getItem('token')) {
       const id_product = this.listCart[id].product_id;
       this.productService.getTotalProduct(id_product).subscribe(
@@ -64,6 +68,10 @@ export class CartComponent implements OnInit {
 
   }
   update(id: number, so_luong: number) {
+    if(so_luong <= 0){
+      alert("Không thể < 1");
+      return;
+    }
     this.listCart[id].so_luong = so_luong;
     localStorage.setItem("cart", JSON.stringify(this.listCart));
     alert("Cập nhật thành công!");

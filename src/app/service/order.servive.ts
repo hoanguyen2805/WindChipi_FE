@@ -13,18 +13,29 @@ export class OrderService{
 
     getByUser():Observable<Orders[]>{
         return this.http.get<Orders[]>('http://localhost:8080/api/orders/getbyuser').pipe(
-            tap(res => console.log(res)),
+            // tap(res => console.log(res)),
             catchError(err => of([]))
         )
     }
-    // getCategories(): Observable<Categories[]>{
-    //     return this.http.get<Categories[]>('http://localhost:8080/api/categories/list')
-    // }
-
-    // getProductsByCategory(id: String):Observable<Categories>{
-    //     return this.http.get<Categories>(`http://localhost:8080/api/categories/${id}`).pipe(
-    //         tap(res => console.log(JSON.stringify(res))),
-    //         catchError(err => of(null))
-    //     )
-    // }
+   
+    getSize():Observable<Orders[]>{
+        return this.http.get<Orders[]>('http://localhost:8080/api/orders/size').pipe(
+            catchError(err => of([]))
+        )
+    }
+    paging(page: number):Observable<Orders[]>{
+        return this.http.get<Orders[]>(`http://localhost:8080/api/orders/page/${page}`).pipe(
+            catchError(err => of([]))
+        )
+    }
+    deleteById(id: number):Observable<any>{
+        return this.http.delete<any>(`http://localhost:8080/api/orders/${id}`).pipe(
+            catchError(err => of(null))
+        )
+    }
+    updateBot(bot: number, order: Orders):Observable<any>{
+        return this.http.put<any>(`http://localhost:8080/api/orders/${bot}`, order).pipe(
+            catchError(err => of(null))
+        )
+    }
 }

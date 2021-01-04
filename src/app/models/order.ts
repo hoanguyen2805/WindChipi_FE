@@ -7,5 +7,8 @@ export class Orders{
     status: String;
     total_money: Number;
     freight_cost: Number;
-    dateCreated: String;
+    date_created: String;
+
+    username: String;
+    idUser: Number;
 }

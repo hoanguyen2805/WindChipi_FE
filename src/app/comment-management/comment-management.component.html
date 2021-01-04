@@ -1,0 +1,41 @@
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>Chi Tiết Bình Luận</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Sản phẩm</th>
+                    <th>Nội dung</th>
+                    <th>Thời gian</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let comment of comments">
+                    <td>{{comment.id}}</td>
+                    <td>{{comment.username}}</td>
+                    <td>{{comment.product_name}}</td>
+                    <td>{{comment.comment_content}}</td>
+                    <td>{{comment.date_created}}</td>
+                    <td style="text-align: center;">
+                        <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(comment.id)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+            class="ne-pagination">
+        </pagination>
+    </div>
+</div>

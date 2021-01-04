@@ -20,6 +20,8 @@ import { SearchProductsComponent } from './search-products/search-products.compo
 import { ContactManagementComponent } from './contact-management/contact-management.component';
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CommentManagementComponent } from './comment-management/comment-management.component';
+import { OrderManagementComponent } from './order-management/order-management.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -40,6 +42,8 @@ const routes: Routes = [
       {path: 'products-management', component: ProductManagementComponent},
       {path: 'categories-management', component: CategoryManagementComponent},
       {path: 'contacts-management', component: ContactManagementComponent},
+      {path: 'comments-management', component: CommentManagementComponent},
+      {path: 'orders-management', component: OrderManagementComponent},
       {path: '', redirectTo: 'users-management', pathMatch: 'full'}
     ], canActivate: [AuthAdminGuard]
   },

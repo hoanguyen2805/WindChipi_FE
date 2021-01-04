@@ -1,3 +1,12 @@
+.khongco{
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 6rem;
+  color:#212529;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
 .section-detail {
   margin-top: 70px;
 }

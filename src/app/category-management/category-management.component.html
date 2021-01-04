@@ -1,1 +1,60 @@
-<p>category-management works!</p>
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div style="min-width: 500px;">
+        <div class="table-title" style="max-width: 600px;">
+            <div class="row">
+                <div class="col-sm-7">
+                    <h2>Chi Tiết Loại Sản Phẩm</h2>
+                </div>
+                <div class="col-sm-5">
+                    <button type="button" class="btn btn-info add-new" (click)="hienThi()"><i class="fa fa-plus"></i>
+                        Thêm Mới</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered" style="max-width: 600px;">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories">
+                    <td>{{category.id}}</td>
+                    <td>
+                        <input type="text" [value]="category.name" #item>
+                    </td>
+                    <td style="text-align: center;">
+                        <a class="edit" title="Edit" data-toggle="tooltip" (click)="update(category.id, item.value)">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        &nbsp;
+                        <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(category.id)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr *ngIf="hien">
+                    <td></td>
+                    <td> <input type="text" name="" id="" #ten> </td>
+                    <td style="text-align: center;">
+                        <a class="add" title="Add" data-toggle="tooltip" (click)="add(ten.value)">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                        &nbsp;
+                        <a class="delete" title="Delete" data-toggle="tooltip" (click)="an()">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+            class="ne-pagination">
+        </pagination>
+        </div>
+    </div>
+</div>

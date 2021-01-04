@@ -1,0 +1,93 @@
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>Chi Tiết Đơn Hàng</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Phí vận chuyển</th>
+                    <th>Tổng tiền</th>
+                    <th>Thời gian</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template ngFor [ngForOf]="orders" let-item let-idx="index" let-total="count">
+                    <!-- <tr *ngFor="let item of orders" class="table-primary"> -->
+                    <tr 
+                    [ngClass]="{'chờ xác nhận': 'table-danger', 'đang vận chuyển': 'table-warning', 'nhận hàng': 'table-info'}[item.status]"
+                    >
+                        <td>{{item.id}}</td>
+                        <td>
+                            {{item.username}}
+                            <!-- <input type="text" [value]="category.name" #item> -->
+                        </td>
+                        <td>
+                            {{item.name}}
+                        </td>
+                        <td>
+                            {{item.price | number: '2.'}}
+                        </td>
+                        <td>
+                            <input type="number" #soluong [value]="item.number_products">
+                            <!-- {{item.numberProducts}} -->
+                        </td>
+                        <td>
+                            {{item.freight_cost | number: '2.'}}
+                        </td>
+                        <td>
+                            {{item.total_money | number: '2.'}}
+                        </td>
+                        <td>
+                            {{item.date_created}}
+                        </td>
+                        <td>
+                            <select name="" id="" #trangthai>
+                                <option value="đang vận chuyển" selected="selected"
+                                    *ngIf="item.status=='đang vận chuyển'">đang vận
+                                    chuyển</option>
+                                <option value="nhận hàng" *ngIf="item.status!=='nhận hàng'">nhận hàng</option>
+                                <option value="chờ xác nhận" *ngIf="item.status!=='chờ xác nhận'">chờ xác nhận</option>
+
+                                <option *ngIf="item.status=='nhận hàng'" value="nhận hàng" selected="selected">nhận hàng
+                                </option>
+                                <option *ngIf="item.status!=='đang vận chuyển'" value="đang vận chuyển">đang vận chuyển
+                                </option>
+
+                                <option *ngIf="item.status=='chờ xác nhận'" value="chờ xác nhận" selected="selected">chờ
+                                    xác nhận
+                                </option>
+
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <a class="edit" title="Edit" data-toggle="tooltip"
+                                (click)="update(trangthai.value, soluong.value, item)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            &nbsp;
+                            <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(item.id)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+            class="ne-pagination">
+        </pagination>
+    </div>
+</div>

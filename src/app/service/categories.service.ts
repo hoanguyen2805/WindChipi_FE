@@ -11,9 +11,31 @@ export class CategoriesService{
         return this.http.get<Categories[]>('http://localhost:8080/api/categories/list')
     }
 
-    getProductsByCategory(id: String):Observable<Categories>{
+    getProductsByCategory(id: number):Observable<Categories>{
         return this.http.get<Categories>(`http://localhost:8080/api/categories/${id}`).pipe(
-            tap(res => console.log(JSON.stringify(res))),
+            // tap(res => console.log(JSON.stringify(res))),
+            catchError(err => of(null))
+        )
+    }
+    paging(page: number): Observable<Categories[]>{
+        return this.http.get<Categories[]>(`http://localhost:8080/api/categories/page/${page}`).pipe(
+            // tap(res => console.log(JSON.stringify(res))),
+            catchError(err => of([]))
+        )
+    }
+
+    add(category: Categories): Observable<any>{
+        return this.http.post<any>('http://localhost:8080/api/categories/add', category).pipe(
+            catchError(err => of(null))
+        )
+    }
+    update(category: Categories):Observable<any>{
+        return this.http.put<any>('http://localhost:8080/api/categories/update', category).pipe(
+            catchError(err => of(null))
+        )
+    }
+    delete(id: number):Observable<any>{
+        return this.http.delete<any>(`http://localhost:8080/api/categories/${id}`).pipe(
             catchError(err => of(null))
         )
     }

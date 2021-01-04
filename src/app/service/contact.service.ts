@@ -11,10 +11,22 @@ export class ContactService{
         return this.http.post<any>('http://localhost:8080/api/contacts/contact',contact);
     }
 
-    getContacts():Observable<Contacts[]>{
+    getSize():Observable<Contacts[]>{
         return this.http.get<Contacts[]>('http://localhost:8080/api/contacts/contacts').pipe(
-            tap(res => console.log(`${JSON.stringify(res)}`)),
+            // tap(res => console.log(`${JSON.stringify(res)}`)),
             catchError(error => of([]))
         );
+    }
+    paging(page: number):Observable<Contacts[]>{
+        return this.http.get<Contacts[]>(`http://localhost:8080/api/contacts/page/${page}`).pipe(
+            // tap(res => console.log(`${JSON.stringify(res)}`)),
+            catchError(error => of([]))
+        );
+    }
+    delete(id: number):Observable<any>{
+        return this.http.delete<any>(`http://localhost:8080/api/contacts/${id}`).pipe(
+            tap(res => console.log(res)),
+            catchError(error => of(null))
+        )
     }
 }

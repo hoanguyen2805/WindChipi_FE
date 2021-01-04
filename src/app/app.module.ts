@@ -41,6 +41,8 @@ import { ContactManagementComponent } from './contact-management/contact-managem
 import { SearchProductsComponent } from './search-products/search-products.component';
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CommentManagementComponent } from './comment-management/comment-management.component';
+import { OrderManagementComponent } from './order-management/order-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,9 @@ import { OrdersComponent } from './orders/orders.component';
     ContactManagementComponent,
     SearchProductsComponent,
     CartComponent,
-    OrdersComponent
+    OrdersComponent,
+    CommentManagementComponent,
+    OrderManagementComponent
   ],
   imports: [
     BrowserModule,

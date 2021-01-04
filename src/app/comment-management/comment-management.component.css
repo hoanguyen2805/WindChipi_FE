@@ -1,0 +1,43 @@
+.table-wrapper {
+  margin: 80px 30px;
+  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.table-title {
+  padding: 18px 10px;
+  background-color: #435d7d;
+}
+.table-title h2 {
+  margin: 6px 0 0;
+  font-size: 22px;
+  color: aliceblue;
+  font-weight: 700;
+}
+.table-title .add-new {
+  float: right;
+  height: 30px;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: none;
+  min-width: 100px;
+  border-radius: 50px;
+  line-height: 13px;
+}
+.table-title .add-new i {
+  margin-right: 4px;
+}
+thead {
+  font-weight: 700;
+}
+a:hover {
+  cursor: pointer;
+}
+table.table td a.edit {
+  color: blue;
+}
+table.table td a.delete {
+  color: #e34724;
+}
+table.table td i {
+  font-size: 19px;
+}

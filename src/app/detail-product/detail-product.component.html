@@ -1,5 +1,8 @@
 <app-header></app-header>
-<main>
+<ng-container *ngIf="!khongco" >
+    <p class="khongco">Không tìm thấy sản phẩm!</p>
+</ng-container>
+<main *ngIf="khongco">
     <section class="section-detail">
         <div class="container_w">
             <div class="row_w">

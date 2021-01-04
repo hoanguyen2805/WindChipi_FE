@@ -17,6 +17,7 @@ export class DetailProductComponent implements OnInit {
   soLuong: number = 1;
   relatedProducts: Products[] = new Array();
   listCart = new Array();
+  khongco: boolean = false;
   constructor(private route: ActivatedRoute, private productService: ProductService,
     private commentService: CommentService, private orderService: OrderService) { }
 
@@ -29,7 +30,16 @@ export class DetailProductComponent implements OnInit {
   getProductById(id: number){
     this.productService.getProductById(id).subscribe(
       res => {
+        if(res === null){
+          console.log("Bị null");
+          this.khongco = false;
+          return;
+        }
+        this.khongco = true;
         this.product = res;
+        if(this.product.total == 0){
+          this.soLuong = 0;
+        }
         this.getRelatedProducts(this.product.categories_id.toString(), this.product.id.toString());
         this.getCommentByProductId(this.product.id.toString());
       }
@@ -53,7 +63,7 @@ export class DetailProductComponent implements OnInit {
     expandImg.parentElement.style.display = "block";
   }
   giam() {
-    if (this.soLuong == 1) {
+    if (this.soLuong <= 1) {
       return;
     }
     else {
@@ -78,7 +88,6 @@ export class DetailProductComponent implements OnInit {
       const newComment: Comments = new Comments();
       newComment.comment_content = content;
       newComment.product_id = this.product.id;
-      newComment.date_created = `${dt.getDate().toString().padStart(2, '0')}-${(dt.getMonth() + 1).toString().padStart(2, '0')}-${dt.getFullYear().toString().padStart(4, '0')} ${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}`;
       this.commentService.saveComment(newComment).subscribe(
         res => {
           alert("Thành Công");
@@ -94,6 +103,10 @@ export class DetailProductComponent implements OnInit {
   }
 
   addCart(){
+    if(this.product.total <= 0){
+      alert("Sản phẩm đã hết hàng!");
+      return;
+    }
     if (!!localStorage.getItem('cart')){
       this.listCart = JSON.parse(localStorage.getItem('cart'));
       this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "name": this.product.name});
@@ -107,6 +120,10 @@ export class DetailProductComponent implements OnInit {
     }
   }
   order(){
+    if(this.product.total == 0){
+      alert("Sản phẩm đã hết hàng!");
+      return;
+    }
     if(!!localStorage.getItem('token')){
     this.orderService.save(+this.product.id, this.soLuong).subscribe(
       res => {

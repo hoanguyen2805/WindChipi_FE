@@ -21,7 +21,7 @@ export class ProductService{
     }
     getProductById(id: number):Observable<Products>{
         return this.http.get<Products>(`http://localhost:8080/api/products/${id}`).pipe(
-            // tap(res => console.log(JSON.stringify(res))),
+            // tap(res => console.log("San pham: "+JSON.stringify(res))),
             catchError(error => of(null))
         )
     }

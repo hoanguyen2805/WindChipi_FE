@@ -1,1 +1,118 @@
-<p>user-management works!</p>
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>Tài Khoản Người Dùng</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th style="width: 4%;">ID</th>
+                    <th style="width: 10%;">Username</th>
+                    <th style="width: 18%;">Email</th>
+                    <th style="width: 16%;">Họ tên</th>
+                    <th style="width: 9%;">Điện thoại</th>
+                    <th style="width: 23%;">Địa chỉ</th>
+                    <th style="width: 7%;">Quyền</th>
+                    <th style="width: 7%;">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template ngFor [ngForOf]="users" let-item>
+                    <tr
+                        [ngClass]="{'chờ xác nhận': 'table-danger', 'đang vận chuyển': 'table-warning', 'nhận hàng': 'table-info'}[item.status]">
+                        <td>{{item.id}}</td>
+                        <td>
+                            {{item.username}}
+                        </td>
+                        <td>
+                            {{item.email}}
+                        </td>
+                        <td>
+                            {{item.full_name}}
+                        </td>
+                        <td>
+                            {{item.phone}}
+                        </td>
+                        <td>
+                            {{item.address}}
+                        </td>
+                        <td>
+                            <ng-template ngFor [ngForOf]="item.roles" let-role>
+                                <ng-template [ngIf]="role.id==3" [ngIfElse]="nguoc">
+                                    <p><input type="checkbox" value="3" checked id="admin" disabled><label for="admin">
+                                            ADMIN</label></p>
+                                </ng-template>
+                                <ng-template #nguoc>
+                                    <p><input type="checkbox" value="3" id="user" checked disabled><label for="user">
+                                            USER</label></p>
+                                </ng-template>
+                            </ng-template>
+                        </td>
+                        <td style="text-align: center;">
+                            <a class="edit" title="Edit" data-toggle="tooltip"
+                                (click)="openModalWithClass(template, item)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            &nbsp;
+                            <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(item.id)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+            class="ne-pagination">
+        </pagination>
+    </div>
+</div>
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title" style="font-size: 22px; font-weight: 700; margin: 10px 20px;">Cập Nhật Tài Khoản</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true" style="font-size: 22px;">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="formUpdate" class="login-form">
+            <label for="">Username</label>
+            <input type="text" name="username" placeholder="Username" formControlName="username" readonly />
+            <label for="">Email</label>
+            <input type="text" name="email" placeholder="Email" formControlName="email" readonly />
+
+            <label for="">Họ Tên</label>
+            <input type="text" name="full_Name" placeholder="Full Name" formControlName="fullName" />
+            <p *ngIf="formUpdate.controls.fullName.errors?.required && formUpdate.controls.fullName.touched"
+                class="kiemtra">Họ tên không được để trống</p>
+
+            <label for="">Số Điện Thoại</label>
+            <input type="text" name="phone" placeholder="Phone" formControlName="phone" />
+            <p *ngIf="formUpdate.controls.phone.errors?.required && formUpdate.controls.phone.touched" class="kiemtra">
+                Số điện thoại không được để trống</p>
+
+            <label for="">Địa Chỉ</label>
+            <input type="text" name="address" placeholder="Address" formControlName="address" />
+            <p *ngIf="formUpdate.controls.address.errors?.required && formUpdate.controls.address.touched"
+                class="kiemtra">Địa chỉ không được để trống</p>
+
+            <label for="">Mật Khẩu Mới: không đổi thì không điền</label>
+            <input type="password" name="password" placeholder="password" formControlName="password" />
+            <!--  -->
+            <label for="">Quyền</label>
+            <br>
+            <input type="checkbox" name="admin" id="admin" style="display: inline; width: auto;"
+                formControlName="admin"><label for="">&nbsp;ADMIN</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="user" id="user" checked style="display: inline; width: auto;" disabled
+               ><label for="">&nbsp;USER</label>
+            <!--  -->
+            <button class="btn btn-primary">CẬP NHẬT</button>
+        </form>
+    </div>
+</ng-template>

@@ -56,4 +56,35 @@ export class ProductService{
             catchError(error => of(null))
         )
     }
+    getSize():Observable<any>{
+        return this.http.get<any>('http://localhost:8080/api/products/size').pipe(
+            // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
+            catchError(err=>of(null))
+        )
+    }
+    paging(page: number):Observable<Products[]>{
+        return this.http.get<Products[]>(`http://localhost:8080/api/products/page/${page}`).pipe(
+            // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
+            catchError(err=>of([]))
+        )
+    }
+
+    getSizeOrderByProduct(id: number):Observable<any>{
+        return this.http.get<any>(`http://localhost:8080/api/products/sizeorder/${id}`).pipe(
+            // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
+            catchError(err=>of(null))
+        )
+    }
+    getSizeCommentByProduct(id: number):Observable<any>{
+        return this.http.get<any>(`http://localhost:8080/api/products/sizecomment/${id}`).pipe(
+            // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
+            catchError(err=>of(null))
+        )
+    }
+    deleteProductByAdmin(id: number):Observable<any>{
+        return this.http.delete<any>(`http://localhost:8080/api/products/${id}`).pipe(
+            // tap(res => console.log(res)),
+            catchError(err => of(null))
+        )
+    }
 }

@@ -1,1 +1,63 @@
-<p>product-management works!</p>
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>Chi Tiết Sản Phẩm</h2>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i>
+                        Thêm Mới</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th style="width: 6%;">ID</th>
+                    <th style="width: 30%;">Tên</th>
+                    <th style="width: 8%;">Giá</th>
+                    <th style="width: 8%;">Đã bán</th>
+                    <th style="width: 8%;">Còn lại</th>
+                    <th style="width: 30%;">Thông tin</th>
+                    <th style="width: 10%;">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-template ngFor [ngForOf]="products" let-item>
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>
+                            {{item.name}}
+                        </td>
+                        <td>
+                            {{item.price | number: '2.'}}
+                        </td>
+                        <td>
+                            {{item.sold}}
+                        </td>
+                        <td>
+                            {{item.total}}
+                        </td>
+                        <td class="ten">
+                            {{item.describe}}
+                        </td>
+                        <td style="text-align: center;">
+                            <a class="edit" title="Edit" data-toggle="tooltip" >
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            &nbsp;
+                            <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(item.id)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+            class="ne-pagination">
+        </pagination>
+    </div>
+</div>

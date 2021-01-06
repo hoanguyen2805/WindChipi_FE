@@ -1,14 +1,15 @@
 .table-wrapper {
+    width: 600px;
     margin: 80px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     padding: 20px;	
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 input{
     outline: none;
-    width: 100%;
+    width: 80%;
     text-align: center;
     border-radius: 10px;
     border: 1px solid black;

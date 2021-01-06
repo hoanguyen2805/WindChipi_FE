@@ -1,0 +1,79 @@
+.table-wrapper {
+  width: 1250px;
+  margin: 80px auto;
+  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.table-title {
+  padding: 18px 10px;
+  background-color: #435d7d;
+  /* width: 100%; */
+  /* max-width: 100%; */
+}
+.table-title h2 {
+  margin: 6px 0 0;
+  font-size: 22px;
+  color: aliceblue;
+  font-weight: 700;
+}
+.table-title .add-new {
+  float: right;
+  height: 30px;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: none;
+  min-width: 100px;
+  border-radius: 50px;
+  line-height: 13px;
+}
+.table-title .add-new i {
+  margin-right: 4px;
+}
+
+.ten {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+}
+
+input {
+  outline: none;
+  max-width: 50px;
+  border-radius: 10px;
+  border: 1px solid black;
+  /* padding-left: 20px; */
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+/* Custom input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+thead {
+  font-weight: 700;
+}
+a:hover {
+  cursor: pointer;
+}
+table.table td a.add {
+  color: #27c46b;
+}
+table.table td a.edit {
+  color: blue;
+}
+table.table td a.delete {
+  color: #e34724;
+}
+table.table td i {
+  font-size: 19px;
+}

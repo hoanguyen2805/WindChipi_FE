@@ -7,4 +7,5 @@ export class Users{
     roles: String[];
     phone: String;
     address: String;
+    role: String[];
 }

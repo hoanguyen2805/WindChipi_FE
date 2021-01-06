@@ -9,6 +9,7 @@
   background: rgb(21,25,53);
 
   position: relative;
+  z-index: 3;
 }
 .app-footer .col_w {
   flex-basis: 33%;

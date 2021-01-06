@@ -1,7 +1,6 @@
 <div class="table-responsive">
     <div class="table-wrapper">
-        <div style="min-width: 500px;">
-        <div class="table-title" style="max-width: 600px;">
+        <div class="table-title">
             <div class="row">
                 <div class="col-sm-7">
                     <h2>Chi Tiết Loại Sản Phẩm</h2>
@@ -12,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <table class="table table-bordered" style="max-width: 600px;">
+        <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th>ID</th>
@@ -23,7 +22,7 @@
             <tbody>
                 <tr *ngFor="let category of categories">
                     <td>{{category.id}}</td>
-                    <td>
+                    <td style="text-align: center;">
                         <input type="text" [value]="category.name" #item>
                     </td>
                     <td style="text-align: center;">
@@ -55,6 +54,5 @@
         <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
             class="ne-pagination">
         </pagination>
-        </div>
     </div>
 </div>

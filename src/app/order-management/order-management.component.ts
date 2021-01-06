@@ -22,7 +22,7 @@ export class OrderManagementComponent implements OnInit {
     this.orderService.getSize().subscribe(
       res => {
         this.size = res.length;
-        console.log(this.size);
+        // console.log(this.size);
       }
     )
   }
@@ -47,11 +47,8 @@ export class OrderManagementComponent implements OnInit {
     else {
       const muathem = soluongmoi - order.number_products.valueOf();
       if (muathem <= 0) {
-        // bỏ lui
         order.status = trangthaimoi;
         order.number_products = soluongmoi;
-        // console.log(order);
-        // console.log("trả lui: "+ (-muathem) + "san pham");
         this.orderService.updateBot(-muathem, order).subscribe(
           res => {
             alert("Đã cập nhật!");
@@ -64,7 +61,6 @@ export class OrderManagementComponent implements OnInit {
         this.productService.getTotalProduct(order.idProduct.toString()).subscribe(
           res => {
             if (muathem <= res) {
-              //mua them
               order.status = trangthaimoi;
               order.number_products = soluongmoi;
               this.orderService.updateBot(-muathem, order).subscribe(
@@ -73,8 +69,6 @@ export class OrderManagementComponent implements OnInit {
                   window.location.reload();
                 }
               )
-              // alert("co the mua")
-              // console.log(`mua them ${muathem}`)
             }
             else {
               alert(`Chỉ được mua thêm tối đa ${res} sản phẩm nữa`);
@@ -82,8 +76,6 @@ export class OrderManagementComponent implements OnInit {
             }
           }
         )
-        // mua thêm
-        // kiem tra co vuot qua so luong khong
       }
     }
 

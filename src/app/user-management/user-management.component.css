@@ -1,0 +1,111 @@
+.table-wrapper {
+  width: 1250px;
+  margin: 80px auto;
+  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.table-title {
+  padding: 18px 10px;
+  background-color: #435d7d;
+  /* width: 100%; */
+  /* max-width: 100%; */
+}
+.table-title h2 {
+  margin: 6px 0 0;
+  font-size: 22px;
+  color: aliceblue;
+  font-weight: 700;
+}
+.table-title .add-new {
+  float: right;
+  height: 30px;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: none;
+  min-width: 100px;
+  border-radius: 50px;
+  line-height: 13px;
+}
+.table-title .add-new i {
+  margin-right: 4px;
+}
+
+thead {
+  font-weight: 700;
+}
+a:hover {
+  cursor: pointer;
+}
+table.table td a.add {
+  color: #27c46b;
+}
+table.table td a.edit {
+  color: blue;
+}
+table.table td a.delete {
+  color: #e34724;
+}
+table.table td i {
+  font-size: 19px;
+}
+
+.login-form {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+.login-form input {
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  color: #333;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  display: block;
+  width: 100%;
+  transition: border 0.25s linear;
+  font-weight: normal;
+}
+.login-form input:focus {
+  border-color: var(--primary);
+}
+.login-form .forgot {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.login-form button {
+  font-size: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.login-form .input-icon {
+  position: relative;
+}
+.login-form .input-icon input {
+  padding-right: 4rem;
+}
+.login-form .input-icon i {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  color: #ccc;
+  cursor: pointer;
+}
+form > label {
+  font-size: 15px;
+  font-weight: bold;
+}
+input {
+  font-size: 15px;
+}
+.kiemtra {
+  color: red;
+  font-family: "Montserrat";
+  padding-bottom: 12px;
+}

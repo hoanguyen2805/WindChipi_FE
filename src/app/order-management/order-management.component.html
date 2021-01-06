@@ -5,33 +5,32 @@
                 <div class="col-sm-8">
                     <h2>Chi Tiết Đơn Hàng</h2>
                 </div>
+                
             </div>
         </div>
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Sản phẩm</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
-                    <th>Phí vận chuyển</th>
-                    <th>Tổng tiền</th>
-                    <th>Thời gian</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
+                    <th style="width: 4%;">ID</th>
+                    <th style="width: 10%;">Username</th>
+                    <th style="width: 24%;">Sản phẩm</th>
+                    <th style="width: 7%;">Giá</th>
+                    <th style="width: 7%;">Số lượng</th>
+                    <th style="width: 8%;">Phí vận chuyển</th>
+                    <th style="width: 9%;">Tổng tiền</th>
+                    <th style="width: 14%;">Thời gian</th>
+                    <th style="width: 8%;">Trạng thái</th>
+                    <th style="width: 7%;">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
                 <ng-template ngFor [ngForOf]="orders" let-item let-idx="index" let-total="count">
-                    <!-- <tr *ngFor="let item of orders" class="table-primary"> -->
                     <tr 
                     [ngClass]="{'chờ xác nhận': 'table-danger', 'đang vận chuyển': 'table-warning', 'nhận hàng': 'table-info'}[item.status]"
                     >
                         <td>{{item.id}}</td>
                         <td>
                             {{item.username}}
-                            <!-- <input type="text" [value]="category.name" #item> -->
                         </td>
                         <td>
                             {{item.name}}
@@ -41,7 +40,6 @@
                         </td>
                         <td>
                             <input type="number" #soluong [value]="item.number_products">
-                            <!-- {{item.numberProducts}} -->
                         </td>
                         <td>
                             {{item.freight_cost | number: '2.'}}

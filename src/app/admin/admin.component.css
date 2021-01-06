@@ -43,7 +43,7 @@ a {
 
 /* Sidebar */
 .s-sidebar__trigger {
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
@@ -69,6 +69,7 @@ a {
   /* height: 600px; */
   background: #243e56;
   color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
 }
 
 .s-sidebar__nav:hover,

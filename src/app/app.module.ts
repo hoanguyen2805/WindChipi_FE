@@ -19,6 +19,7 @@ import { ContactService } from './service/contact.service';
 import { ProductService } from './service/product.service';
 import { CommentService } from './service/comment.service';
 import { OrderService } from './service/order.servive';
+import { UploadFileService } from './service/uploadfile.service';
 //guard
 import { SignInSignUpGuard } from './guards/signin-signup.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
@@ -78,7 +79,7 @@ import { OrderManagementComponent } from './order-management/order-management.co
     PaginationModule.forRoot(),
     TabsModule.forRoot()
   ],
-  providers: [CategoriesService, AuthService, UsersService, ContactService, ProductService, CommentService, OrderService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
+  providers: [CategoriesService, AuthService, UsersService, ContactService, ProductService, CommentService, OrderService, UploadFileService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

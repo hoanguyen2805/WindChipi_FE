@@ -10,24 +10,20 @@
                     <div class="hang">
                         <div class="cot1">
                             <div class="cot">
-                                <img src="../../assets/images/product/product01.jpg" alt="Nature" style="width:100%"
+                                <img [src]="product.images" alt="Nature" style="width:100%"
                                     (click)="myFunction($event);">
                             </div>
                             <div class="cot">
-                                <img src="../../assets/images/product/product02.jpg" alt="Snow" style="width:100%"
+                                <img [src]="product.images2" alt="Snow" style="width:100%"
                                     (click)="myFunction($event);">
                             </div>
                             <div class="cot">
-                                <img src="../../assets/images/product/product03.jpg" alt="Mountains" style="width:100%"
-                                    (click)="myFunction($event);">
-                            </div>
-                            <div class="cot">
-                                <img src="../../assets/images/product/product04.jpg" alt="Lights" style="width:100%"
+                                <img [src]="product.images3" alt="Mountains" style="width:100%"
                                     (click)="myFunction($event);">
                             </div>
                         </div>
                         <div class="cot2">
-                            <img id="expandedImg" style="width:100%; max-height: 800px; object-fit: cover;" src="../../assets/images/product/product01.jpg">
+                            <img id="expandedImg" style="width:100%; max-height: 800px; object-fit: cover;" [src]="product.images">
                         </div>
                     </div>
                 </div>
@@ -61,7 +57,7 @@
                 <div class="col_w" *ngFor="let item of relatedProducts">
                     <a routerLink="/detail-product/{{item.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/hoodie-with-zipper-2-500x500.jpg" alt="" width="100%">
+                            <img [src]="item.images" alt="" width="100%">
                             <div class="overlay">
                                 <p>{{item.name}}</p>
                                 <p>{{item.price | number: '2.'}}<span>đ</span></p>

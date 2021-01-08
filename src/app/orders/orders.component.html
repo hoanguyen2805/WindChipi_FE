@@ -34,6 +34,7 @@
                                 <th scope="col">Phí vận chuyển</th>
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">Thời gian</th>
+                                <th scope="col">Trạng thái</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,7 @@
                                 <td>{{order.total_money | number: '2.'}}<span
                                         style="text-decoration: underline;">đ</span></td>
                                 <td>{{order.date_created}}</td>
+                                <td>{{order.status}}</td>
                             </tr>
                         </tbody>
                     </table>

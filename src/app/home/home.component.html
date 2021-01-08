@@ -25,7 +25,7 @@
                 <div class="col_w" *ngFor="let phantu of hotProducts">
                     <a routerLink="/detail-product/{{phantu.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/product/product01.jpg" alt="" width="100%">
+                            <img [src]="phantu.images" alt="" width="100%">
                             <div class="overlay">
                                 <p>{{phantu.name}}</p>
                                 <p>{{phantu.price | number: '2.'}}<span>đ</span></p>
@@ -47,7 +47,7 @@
                 <div class="col_w" *ngFor="let item of newProducts">
                     <a routerLink="/detail-product/{{item.id}}">
                         <div class="featured-product__img">
-                            <img src="../../assets/images/product/product02.jpg" alt="" width="100%">
+                            <img [src]="item.images" alt="" width="100%">
                             <div class="overlay">
                                 <p>{{item.name}}</p>
                                 <p>{{item.price | number: '2.'}}<span>đ</span></p>

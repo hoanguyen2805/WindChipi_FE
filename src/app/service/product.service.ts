@@ -87,4 +87,10 @@ export class ProductService{
             catchError(err => of(null))
         )
     }
+
+    save(product: Products):Observable<any>{
+        return this.http.post<any>('http://localhost:8080/api/products/save', product).pipe(
+            catchError(err => of(null))
+        )
+    }
 }

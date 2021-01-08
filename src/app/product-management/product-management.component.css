@@ -37,16 +37,6 @@
   max-width: 0;
 }
 
-input {
-  outline: none;
-  max-width: 50px;
-  border-radius: 10px;
-  border: 1px solid black;
-  /* padding-left: 20px; */
-  text-align: center;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
 /* Custom input number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -76,4 +66,82 @@ table.table td a.delete {
 }
 table.table td i {
   font-size: 19px;
+}
+.message{
+  font-size: 13px;
+  color: #e34724;
+}
+.formInsert {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 10%;
+}
+.formInsert input, textarea, select {
+  padding: 1.5rem;
+  border: 1px solid rgb(252, 246, 246);
+  /* color: #333; */
+  color: #0c0a0a;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  display: block;
+  width: 100%;
+  transition: border 0.25s linear;
+  font-weight: normal;
+  background-color: #f9f9f9;
+}
+.formInsert input:focus {
+  border-color: var(--primary);
+}
+.formInsert .forgot {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.update {
+  font-size: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.formInsert .input-icon {
+  position: relative;
+}
+.formInsert .input-icon input {
+  padding-right: 4rem;
+}
+.formInsert .input-icon i {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  color: #ccc;
+  cursor: pointer;
+}
+.formInsert label {
+  font-size: 15px;
+  font-weight: bold;
+}
+.formInsert input, select, textarea {
+  font-size: 15px;
+}
+
+.kiemtra {
+  color: red;
+  font-family: "Montserrat";
+  padding-bottom: 12px;
+}
+.upload{
+  width: 60% !important;
+  display: inline !important;
+}
+.btn-upload{
+  width: 20% !important;
+  font-size: 15px;
+  float: right;
+  margin-top: 10px;
+  padding: 10px 10px;
 }

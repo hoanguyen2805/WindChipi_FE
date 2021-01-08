@@ -6,7 +6,8 @@
                     <h2>Chi Tiết Sản Phẩm</h2>
                 </div>
                 <div class="col-sm-4">
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i>
+                    <button type="button" class="btn btn-info add-new" (click)="openModalWithClass(template)"><i
+                            class="fa fa-plus"></i>
                         Thêm Mới</button>
                 </div>
             </div>
@@ -43,7 +44,7 @@
                             {{item.describe}}
                         </td>
                         <td style="text-align: center;">
-                            <a class="edit" title="Edit" data-toggle="tooltip" >
+                            <a class="edit" title="Edit" data-toggle="tooltip" (click)="openModalWithClass2(templateUpdate, item)">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             &nbsp;
@@ -56,8 +57,242 @@
             </tbody>
         </table>
 
-        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=8
             class="ne-pagination">
         </pagination>
     </div>
 </div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title"
+            style="font-size: 22px; font-weight: 700; margin: 10px 0px; padding-left: 10%; padding-right: 10%;">Thêm Sản
+            Phẩm</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true" style="font-size: 22px;">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="formInsert" class="formInsert">
+            <label for="">Tên Sản Phẩm</label>
+            <input type="text" name="name" placeholder="Tên" formControlName="name" />
+            <p *ngIf="formInsert.controls.name.errors?.required && formInsert.controls.name.touched"
+                class="kiemtra">Tên sản phẩm không được để trống!</p>
+
+            <label for="">Loại Sản Phẩm</label>
+            <select name="categories_id" formControlName="categories_id">
+                <option value="" disabled>Chọn Loại Sản Phẩm</option>
+                <ng-template ngFor [ngForOf]="categories" let-category>
+                    <option [value]="category.id" selected>{{category.name}}</option>
+                </ng-template>
+            </select>
+            <p *ngIf="formInsert.controls.categories_id.errors?.required && formInsert.controls.categories_id.touched"
+                class="kiemtra">Loại sản phẩm không được để trống!</p>
+
+            <label for="">Giá Sản Phẩm</label>
+            <input type="number" name="price" formControlName="price" min="0" />
+            <p *ngIf="formInsert.controls.price.errors?.required && formInsert.controls.price.touched"
+            class="kiemtra">Giá sản phẩm không được để trống!</p>
+            <p *ngIf="formInsert.controls.price.errors?.min && formInsert.controls.price.touched"
+            class="kiemtra">Giá sản phẩm không được dưới 0!</p>
+
+            <label for="">Số Lượng Sản Phẩm Đã Bán</label>
+            <input type="number" name="sold" formControlName="sold" min="0"/>
+            <p *ngIf="formInsert.controls.sold.errors?.required && formInsert.controls.sold.touched"
+            class="kiemtra">Số lượng sản phẩm đã bán không được để trống!</p>
+            <p *ngIf="formInsert.controls.sold.errors?.min && formInsert.controls.sold.touched"
+            class="kiemtra">Số lượng sản phẩm đã bán không được dưới 0!</p>
+
+            <label for="">Số Lượng Sản Phẩm Trong Kho</label>
+            <input type="number" name="total" formControlName="total" min="0"/>
+            <p *ngIf="formInsert.controls.total.errors?.required && formInsert.controls.total.touched"
+            class="kiemtra">Số lượng sản phẩm trong kho không được để trống!</p>
+            <p *ngIf="formInsert.controls.total.errors?.min && formInsert.controls.total.touched"
+            class="kiemtra">Số lượng sản phẩm trong kho không được dưới 0!</p>
+
+            <label for="">Thông Tin Sản Phẩm</label>
+            <textarea name="describe" id="" cols="30" rows="10" formControlName="describe"></textarea>
+            <p *ngIf="formInsert.controls.describe.errors?.required && formInsert.controls.describe.touched"
+                class="kiemtra">Thông tin sản phẩm không được để trống!</p>
+
+
+            <!-- UPLOAD IMAGE -->
+            <label style="display: block;">Chọn Hình 1</label>
+            <input type="file" (change)="selectFile($event)" class="upload" />
+            <button class="btn btn-success btn-upload" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+            <div *ngIf="currentFile" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                    attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress }}%
+                </div>
+            </div>
+            <div class="alert alert-light message" role="alert">{{ message }}</div>
+
+
+            <label style="display: block;">Chọn Hình 2</label>
+            <input type="file" (change)="selectFile2($event)" class="upload" />
+            <button class="btn btn-success btn-upload" [disabled]="!selectedFiles2" (click)="upload2()">Upload</button>
+            <div *ngIf="currentFile2" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar2"
+                    attr.aria-valuenow="{{ progress2 }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress2 }}%
+                </div>
+            </div>
+            <div class="alert alert-light message" role="alert">{{ message2 }}</div>
+
+
+            <label style="display: block;">Chọn Hình 3</label>
+            <input type="file" (change)="selectFile3($event)" class="upload" />
+            <button class="btn btn-success btn-upload" [disabled]="!selectedFiles3" (click)="upload3()">Upload</button>
+            <div *ngIf="currentFile3" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar3"
+                    attr.aria-valuenow="{{ progress3 }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress3 }}%
+                </div>
+            </div>
+            <div class="alert alert-light message" role="alert">{{ message3 }}</div>
+            <!-- END UPLOAD IMAGE -->
+
+            <button class="btn btn-danger update" [disabled]="formInsert.invalid">THÊM MỚI</button>
+        </form>
+    </div>
+</ng-template>
+
+
+
+
+
+<ng-template #templateUpdate>
+    <div class="modal-header">
+        <h4 class="modal-title"
+            style="font-size: 22px; font-weight: 700; margin: 10px 0px; padding-left: 10%; padding-right: 10%;">Cập Nhật Sản
+            Phẩm</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true" style="font-size: 22px;">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="updateProduct()" [formGroup]="formUpdate" class="formInsert">
+            <label for="">Tên Sản Phẩm</label>
+            <input type="text" name="name" placeholder="Tên" formControlName="name" />
+            <p *ngIf="formInsert.controls.name.errors?.required && formInsert.controls.name.touched"
+                class="kiemtra">Tên sản phẩm không được để trống!</p>
+
+            <label for="">Loại Sản Phẩm</label>
+            <select name="categories_id" formControlName="categories_id">
+                <option value="" disabled>Chọn Loại Sản Phẩm</option>
+                <ng-template ngFor [ngForOf]="categories" let-category>
+                    <option [value]="category.id" selected>{{category.name}}</option>
+                </ng-template>
+            </select>
+            <p *ngIf="formInsert.controls.categories_id.errors?.required && formInsert.controls.categories_id.touched"
+                class="kiemtra">Loại sản phẩm không được để trống!</p>
+
+            <label for="">Giá Sản Phẩm</label>
+            <input type="number" name="price" formControlName="price" min="0" />
+            <p *ngIf="formInsert.controls.price.errors?.required && formInsert.controls.price.touched"
+            class="kiemtra">Giá sản phẩm không được để trống!</p>
+            <p *ngIf="formInsert.controls.price.errors?.min && formInsert.controls.price.touched"
+            class="kiemtra">Giá sản phẩm không được dưới 0!</p>
+
+            <label for="">Số Lượng Sản Phẩm Đã Bán</label>
+            <input type="number" name="sold" formControlName="sold" min="0"/>
+            <p *ngIf="formInsert.controls.sold.errors?.required && formInsert.controls.sold.touched"
+            class="kiemtra">Số lượng sản phẩm đã bán không được để trống!</p>
+            <p *ngIf="formInsert.controls.sold.errors?.min && formInsert.controls.sold.touched"
+            class="kiemtra">Số lượng sản phẩm đã bán không được dưới 0!</p>
+
+            <label for="">Số Lượng Sản Phẩm Trong Kho</label>
+            <input type="number" name="total" formControlName="total" min="0"/>
+            <p *ngIf="formInsert.controls.total.errors?.required && formInsert.controls.total.touched"
+            class="kiemtra">Số lượng sản phẩm trong kho không được để trống!</p>
+            <p *ngIf="formInsert.controls.total.errors?.min && formInsert.controls.total.touched"
+            class="kiemtra">Số lượng sản phẩm trong kho không được dưới 0!</p>
+
+            <label for="">Thông Tin Sản Phẩm</label>
+            <textarea name="describe" id="" cols="30" rows="10" formControlName="describe"></textarea>
+            <p *ngIf="formInsert.controls.describe.errors?.required && formInsert.controls.describe.touched"
+                class="kiemtra">Thông tin sản phẩm không được để trống!</p>
+
+
+            <!-- UPLOAD IMAGE -->
+            <label style="display: block;">Chọn Hình 1</label>
+            <input type="file" (change)="selectFile($event)" class="upload" />
+            <button class="btn btn-success btn-upload" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+            <div *ngIf="currentFile" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                    attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress }}%
+                </div>
+            </div>
+            <div class="alert alert-light message" role="alert">{{ message }}</div>
+
+
+            <label style="display: block;">Chọn Hình 2</label>
+            <input type="file" (change)="selectFile2($event)" class="upload" />
+            <button class="btn btn-success btn-upload" [disabled]="!selectedFiles2" (click)="upload2()">Upload</button>
+            <div *ngIf="currentFile2" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar2"
+                    attr.aria-valuenow="{{ progress2 }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress2 }}%
+                </div>
+            </div>
+            <div class="alert alert-light message" role="alert">{{ message2 }}</div>
+
+
+            <label style="display: block;">Chọn Hình 3</label>
+            <input type="file" (change)="selectFile3($event)" class="upload" />
+            <button class="btn btn-success btn-upload" [disabled]="!selectedFiles3" (click)="upload3()">Upload</button>
+            <div *ngIf="currentFile3" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar3"
+                    attr.aria-valuenow="{{ progress3 }}" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{ width: progress + '%' }">
+                    {{ progress3 }}%
+                </div>
+            </div>
+            <div class="alert alert-light message" role="alert">{{ message3 }}</div>
+            <!-- END UPLOAD IMAGE -->
+
+            <button class="btn btn-danger update" [disabled]="formInsert.invalid">THÊM MỚI</button>
+        </form>
+    </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="currentFile" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+        attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+        {{ progress }}%
+    </div>
+</div>
+
+<label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" style="display: block;" />
+</label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+    Upload
+</button>
+
+<div class="alert alert-light" role="alert">{{ message }}</div>
+
+<div class="card">
+    <div class="card-header">List of Files</div>
+    <ul class="list-group list-group-flush" *ngFor="let file of fileInfos | async">
+        <li class="list-group-item">
+            <a href="{{ file.url }}">{{ file.url }}</a>
+        </li>
+    </ul>
+</div> -->

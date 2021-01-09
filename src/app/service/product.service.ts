@@ -93,4 +93,9 @@ export class ProductService{
             catchError(err => of(null))
         )
     }
+    update(product: Products):Observable<any>{
+        return this.http.patch<any>('http://localhost:8080/api/products/update', product).pipe(
+            catchError(err => of(null))
+        )
+    }
 }

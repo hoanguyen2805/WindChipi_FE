@@ -139,9 +139,26 @@ table.table td i {
   display: inline !important;
 }
 .btn-upload{
-  width: 20% !important;
+  width: 20%;
   font-size: 15px;
   float: right;
   margin-top: 10px;
   padding: 10px 10px;
+}
+
+.btn-update{
+  width: 50% !important;
+  font-size: 15px;
+  padding: 10px 10px;
+}
+.row_x{
+  display: flex;
+  margin-bottom: 5px;
+}
+.col_x1{
+  flex-basis: 60%;
+}
+.col_x2{
+  flex-basis: 40%;
+  text-align: right;
 }

@@ -25,7 +25,7 @@
                         <tr *ngFor="let cart of listCart; index as idx">
                             <th scope="row">{{idx+1}}</th>
                             <td >
-                                <img src="../../assets/images/product/product01.jpg" alt="">
+                                <img [src]="cart.image" alt="">
                                 
                             </td>
                             <td><a routerLink="/detail-product/{{cart.product_id}}">{{cart.name}}</a></td>

@@ -37,6 +37,7 @@ export class ProductManagementComponent implements OnInit {
 
 
   // END FILE
+  searchText: string;
   idProduct: number;
   formInsert: FormGroup;
   formUpdate: FormGroup;
@@ -70,22 +71,34 @@ export class ProductManagementComponent implements OnInit {
     })
     // this.fileInfos = this.uploadService.getFiles();
   }
+
   getCategories() {
     this.categoryService.getCategories().subscribe(
       res => this.categories = res
     )
   }
+
+  search(page: number) {
+    if (this.searchText == undefined) {
+      this.searchText = "";
+    }
+    this.currentPage = 1;
+    this.getSize();
+    this.productService.searchProduct(this.searchText, page).subscribe(
+      res => this.products = res
+    )
+
+  }
   getSize() {
-    this.productService.getSize().subscribe(
+    if (this.searchText == undefined) {
+      this.searchText = "";
+    }
+    this.productService.getSize(this.searchText).subscribe(
       res => this.size = res
     )
   }
   pageChanged(event: any): void {
-    this.productService.paging(event.page - 1).subscribe(
-      res => {
-        this.products = res;
-      }
-    )
+    this.search(event.page - 1);
   }
   delete(id: number) {
     this.productService.getSizeOrderByProduct(id).subscribe(
@@ -235,16 +248,16 @@ export class ProductManagementComponent implements OnInit {
     this.urlImage = undefined;
     this.urlImage2 = undefined;
     this.urlImage3 = undefined;
-    if(product.images){
+    if (product.images) {
       this.urlImage = product.images.toString();
     }
-    if(product.images2){
+    if (product.images2) {
       this.urlImage2 = product.images2.toString();
     }
-    if(product.images3){
+    if (product.images3) {
       this.urlImage3 = product.images3.toString();
     }
-   
+
     this.idProduct = +product.id;
     this.formUpdate.patchValue({
       name: product.name,

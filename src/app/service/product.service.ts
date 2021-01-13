@@ -56,12 +56,6 @@ export class ProductService{
             catchError(error => of(null))
         )
     }
-    getSize():Observable<any>{
-        return this.http.get<any>('http://localhost:8080/api/products/size').pipe(
-            // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
-            catchError(err=>of(null))
-        )
-    }
     paging(page: number):Observable<Products[]>{
         return this.http.get<Products[]>(`http://localhost:8080/api/products/page/${page}`).pipe(
             // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
@@ -96,6 +90,19 @@ export class ProductService{
     update(product: Products):Observable<any>{
         return this.http.patch<any>('http://localhost:8080/api/products/update', product).pipe(
             catchError(err => of(null))
+        )
+    }
+
+    getSize(content: String):Observable<any>{
+        return this.http.get<any>(`http://localhost:8080/api/products/getsize?content=${content}`).pipe(
+            // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
+            catchError(err=>of(null))
+        )
+    }
+    searchProduct(content: string, page: number):Observable<Products[]>{
+        return this.http.get<Products[]>(`http://localhost:8080/api/products/search?content=${content}&page=${page}`).pipe(
+             // tap(res => console.log(res)),
+             catchError(err => of(null))
         )
     }
 }

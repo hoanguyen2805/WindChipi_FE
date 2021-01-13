@@ -2,10 +2,16 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-3">
                     <h2>Chi Tiết Sản Phẩm</h2>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
+                    <div class="search-container" style="text-align: right;">
+                        <input type="text" placeholder="Search.." [(ngModel)]="searchText">
+                        <button (click)="pageChanged({page: 1})"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-sm-1">
                     <button type="button" class="btn btn-info add-new" (click)="openModalWithClass(template)"><i
                             class="fa fa-plus"></i>
                         Thêm Mới</button>

@@ -5,17 +5,23 @@
                 <div class="col-sm-8">
                     <h2>Chi Tiết Liên Hệ</h2>
                 </div>
+                <div class="col-sm-4">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search.." [(ngModel)]="searchText">
+                        <button (click)="pageChanged({page: 1})"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th style="width: 4%;">ID</th>
-                    <th style="width: 12%;">Tên</th>            
-                    <th style="width: 18%;">Email</th>          
+                    <th style="width: 12%;">Tên</th>
+                    <th style="width: 18%;">Email</th>
                     <th style="width: 10%;">Số điện thoại</th>
                     <th style="width: 14%;">Ngày gửi</th>
-                    <th style="width: 35%">Nội dung</th>        
+                    <th style="width: 35%">Nội dung</th>
                     <th style="width: 7%;">Thao tác</th>
                 </tr>
             </thead>
@@ -40,8 +46,8 @@
             </tbody>
         </table>
 
-        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"
-            [itemsPerPage]=5 class="ne-pagination">
+        <pagination [totalItems]="size" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [itemsPerPage]=5
+            class="ne-pagination">
         </pagination>
     </div>
 </div>

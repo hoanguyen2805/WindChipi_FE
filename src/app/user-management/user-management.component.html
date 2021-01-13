@@ -5,6 +5,12 @@
                 <div class="col-sm-8">
                     <h2>Tài Khoản Người Dùng</h2>
                 </div>
+                <div class="col-sm-4">
+                    <div class="search-container">
+                            <input type="text" placeholder="Search.." [(ngModel)]="searchText">
+                            <button (click)="pageChanged({page: 1})"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
         <table class="table table-bordered">
@@ -109,8 +115,8 @@
             <input type="checkbox" name="admin" id="admin" style="display: inline; width: auto;"
                 formControlName="admin"><label for="">&nbsp;ADMIN</label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="user" id="user" checked style="display: inline; width: auto;" disabled
-               ><label for="">&nbsp;USER</label>
+            <input type="checkbox" name="user" id="user" checked style="display: inline; width: auto;" disabled><label
+                for="">&nbsp;USER</label>
             <!--  -->
             <button class="btn btn-primary">CẬP NHẬT</button>
         </form>

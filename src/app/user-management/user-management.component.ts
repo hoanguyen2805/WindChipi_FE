@@ -16,6 +16,9 @@ export class UserManagementComponent implements OnInit {
   formUpdate: FormGroup;
   roles: String[] = new Array();
   id: number;
+
+  searchText: string;
+  
   constructor(private userService: UsersService, private modalService: BsModalService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -30,20 +33,31 @@ export class UserManagementComponent implements OnInit {
       password: [''],
       admin: [false],
     })
+    
+  }
+
+  search(page: number){
+    if(this.searchText == undefined){
+      this.searchText = "";
+    }
+    this.currentPage = 1;
+    this.getSize();
+    this.userService.searchUser(this.searchText, page).subscribe(
+      res => this.users = res
+    )
   }
   getSize() {
-    this.userService.getSize().subscribe(
+    if(this.searchText == undefined){
+      this.searchText = "";
+    }
+    this.userService.getSize(this.searchText).subscribe(
       res => {
         this.size = res;
       }
     )
   }
   pageChanged(event: any): void {
-    this.userService.paging(event.page - 1).subscribe(
-      res => {
-        this.users = res
-      }
-    )
+    this.search(event.page - 1);
   }
   openModalWithClass(template: TemplateRef<any>, user: Users) {
     this.modalRef = this.modalService.show(

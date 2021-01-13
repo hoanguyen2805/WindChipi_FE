@@ -10,21 +10,34 @@ export class ContactManagementComponent implements OnInit {
   contacts: Contacts[];
   size: number = 0;
   currentPage = 1;
+  searchText: string;
   constructor(private contactService: ContactService) { }
   ngOnInit(): void {
     this.getSize();
     this.pageChanged({page: 1});
   }
+
+  search(page: number){
+    if(this.searchText == undefined){
+      this.searchText = "";
+    }
+    this.currentPage = 1;
+    this.getSize();
+    this.contactService.searchContact(this.searchText, page).subscribe(
+      res => this.contacts = res
+    )
+  }
+
   getSize():void{
-    this.contactService.getSize().subscribe(
-      res => this.size = res.length
+    if(this.searchText == undefined){
+      this.searchText = "";
+    }
+    this.contactService.getSize(this.searchText).subscribe(
+      res => this.size = res
     )
   }
   pageChanged(event: any): void {
-    // console.log(this.currentPage);
-    this.contactService.paging(event.page - 1).subscribe(
-      res => this.contacts = res
-    )
+    this.search(event.page - 1);
   }
   delete(id: number){
     console.log(id);

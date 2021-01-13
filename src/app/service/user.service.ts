@@ -19,8 +19,8 @@ export class UsersService{
             catchError(err=>of(new Users()))
         )
     }
-    getSize():Observable<any>{
-        return this.http.get<any>('http://localhost:8080/api/users/size').pipe(
+    getSize(content: string):Observable<any>{
+        return this.http.get<any>(`http://localhost:8080/api/users/getsize?content=${content}`).pipe(
             // tap(res=>console.log(`size: ${JSON.stringify(res)}`)),
             catchError(err=>of(null))
         )
@@ -55,6 +55,12 @@ export class UsersService{
         return this.http.patch('http://localhost:8080/api/users/updateuser', user).pipe(
             // tap(res=> console.log(res)),
             catchError(err=>of(new Users()))
+        )
+    }
+    searchUser(content: string, page: number):Observable<Users[]>{
+        return this.http.get<Users[]>(`http://localhost:8080/api/users/search?content=${content}&page=${page}`).pipe(
+            // tap(res => console.log(res)),
+            catchError(err => of(null))
         )
     }
 }

@@ -109,12 +109,12 @@ export class DetailProductComponent implements OnInit {
     }
     if (!!localStorage.getItem('cart')){
       this.listCart = JSON.parse(localStorage.getItem('cart'));
-      this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "name": this.product.name});
+      this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "image": this.product.images, "name": this.product.name});
       localStorage.setItem("cart", JSON.stringify(this.listCart));
       alert("Thành Công!");
     }
     else{
-      this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "name": this.product.name});
+      this.listCart.push({"product_id": this.product.id, "so_luong": this.soLuong, "price": this.product.price, "image": this.product.images, "name": this.product.name});
       localStorage.setItem("cart", JSON.stringify(this.listCart));
       alert("Thành Công!");
     }

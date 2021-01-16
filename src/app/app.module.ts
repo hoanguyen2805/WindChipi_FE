@@ -20,6 +20,7 @@ import { ProductService } from './service/product.service';
 import { CommentService } from './service/comment.service';
 import { OrderService } from './service/order.servive';
 import { UploadFileService } from './service/uploadfile.service';
+import { ComponentShareService } from './service/component-share.service';
 //guard
 import { SignInSignUpGuard } from './guards/signin-signup.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
@@ -44,6 +45,7 @@ import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CommentManagementComponent } from './comment-management/comment-management.component';
 import { OrderManagementComponent } from './order-management/order-management.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,8 @@ import { OrderManagementComponent } from './order-management/order-management.co
     CartComponent,
     OrdersComponent,
     CommentManagementComponent,
-    OrderManagementComponent
+    OrderManagementComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,7 @@ import { OrderManagementComponent } from './order-management/order-management.co
     PaginationModule.forRoot(),
     TabsModule.forRoot()
   ],
-  providers: [CategoriesService, AuthService, UsersService, ContactService, ProductService, CommentService, OrderService, UploadFileService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
+  providers: [CategoriesService, AuthService, UsersService, ContactService, ProductService, CommentService, OrderService, UploadFileService, ComponentShareService, SignInSignUpGuard, AuthAdminGuard, AuthUserGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

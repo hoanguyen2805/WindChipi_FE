@@ -8,7 +8,7 @@
         </div>
         <div class="row_w">
             <div class="col_w" *ngFor="let item of trang">
-                <a routerLink="/detail-product/{{item.id}}">
+                <a href="/detail-product/{{item.id}}">
                     <div class="featured-product__img">
                         <img [src]="item.images" alt="" width="100%">
                         <div class="overlay">

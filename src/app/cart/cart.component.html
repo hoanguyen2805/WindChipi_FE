@@ -9,12 +9,13 @@
                 Có 0 sản phẩm trong giỏ hàng
             </h5>
             <div class="table-responsive" *ngIf="listCart.length != 0">
-                <table class="table table-striped" >
+                <table class="table table-striped" style="min-width: 840px;">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col" colspan="1">Sản phẩm</th>
-                            <th></th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Giá</th>
                             <th scope="col">Số lượng</th>
                             <th scope="col">Tổng tiền</th>
@@ -28,19 +29,27 @@
                                 <img [src]="cart.image" alt="">
                                 
                             </td>
-                            <td><a routerLink="/detail-product/{{cart.product_id}}">{{cart.name}}</a></td>
+                            <td><a href="/detail-product/{{cart.product_id}}">{{cart.name}}</a></td>
+                            <td>{{cart.size}}</td>
                             <td>{{cart.price | number: '2.'}}<span>đ</span></td>
                             <td>
-                                <input type="number" [value]="cart.so_luong" style="width: 50px; text-align: center;" #total>
-                                <!-- {{cart.so_luong}} -->
+                                <button class="nut" (click)="giam(total)">-</button>
+                                <input type="number" [value]="cart.so_luong" readonly style="width: 35px; text-align: center;" #total>
+                                <button class="nut" (click)="tang(total)">+</button>
                             </td>
                             <td>{{cart.so_luong*cart.price | number: '2.'}}<span>đ</span></td>
                             <td>    
-                                <button (click)="order(idx, total.value)" class="btn btn-success">ĐẶT HÀNG</button>
-                                &nbsp;
-                                <button (click)="update(idx, total.value)" class="btn btn-primary">CẬP NHẬT</button>
-                                &nbsp;
-                                <button (click)="xoa(idx)" class="btn btn-danger">XÓA</button>
+                                <a class="order" title="Thanh toán" data-toggle="tooltip" (click)="thanhToan(idx, total.value)">
+                                    <i class="fa fa-step-forward"></i>
+                                </a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a class="edit" title="Cập nhật" data-toggle="tooltip" (click)="update(idx, total.value)">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a class="delete" title="Xóa" data-toggle="tooltip" (click)="xoa(idx)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
                             </td>
                         </tr>
                     </tbody>

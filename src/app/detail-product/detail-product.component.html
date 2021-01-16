@@ -1,5 +1,5 @@
 <app-header></app-header>
-<ng-container *ngIf="!khongco" >
+<ng-container *ngIf="!khongco">
     <p class="khongco">Không tìm thấy sản phẩm!</p>
 </ng-container>
 <main *ngIf="khongco">
@@ -23,7 +23,8 @@
                             </div>
                         </div>
                         <div class="cot2">
-                            <img id="expandedImg" style="width:100%; max-height: 800px; object-fit: cover;" [src]="product.images">
+                            <img id="expandedImg" style="width:100%; max-height: 800px; object-fit: cover;"
+                                [src]="product.images">
                         </div>
                     </div>
                 </div>
@@ -32,13 +33,36 @@
                         <p>{{product.name}}</p>
                         <p>{{product.price | number: '2.'}}<span>đ</span></p>
                         <hr>
-                        <p>Hiện tại còn {{product.total}} sản phẩm.</p>
-                        <button class="nut" (click)="giam()">-</button><input type="number" [value]="soLuong"
-                            readonly><button class="nut" (click)="tang()">+</button>
+                        <form (ngSubmit)="order();" [formGroup]="formOrder">
+                            <div class="radio-toolbar">
+                                <span style="font-size: 1.5rem; font-weight: 500;">SIZE: </span>
+                                &nbsp;
+                                <input type="radio" formControlName="size" id="radioS" name="size" value="S" checked>
+                                <label for="radioS">S</label>
+                                &nbsp;
+                                <input type="radio" formControlName="size" id="radioM" name="size" value="M">
+                                <label for="radioM">M</label>
+                                &nbsp;
+                                <input type="radio" formControlName="size" id="radioL" name="size" value="L">
+                                <label for="radioL">L</label>
+                                &nbsp;
+                                <input type="radio" formControlName="size" id="radioXL" name="size" value="XL">
+                                <label for="radioXL">XL</label>
+                                &nbsp;
+                                <input type="radio" formControlName="size" id="radioXXL" name="size" value="XXL">
+                                <label for="radioXXL">XXL</label>
+                            </div>
+                            <hr>
+                            <p style="font-size: 1.5rem;">Hiện tại còn {{product.total}} sản phẩm.</p>
+                            <input type="button" class="nut" (click)="giam()" value="-">
+                            <input type="number" readonly formControlName="so_luong">
+                            <input type="button" class="nut" (click)="tang()" value="+">
+                        </form>
+
                         <button class="mua den" (click)="addCart()">
                             THÊM VÀO GIỎ
                         </button>
-                        <button class="mua do" (click)="order()">
+                        <button class="mua do" type="submit" (click)="order()">
                             MUA NGAY
                         </button>
                         <p class="describe">{{product.describe}}</p>
@@ -55,7 +79,7 @@
             </div>
             <div class="row_w">
                 <div class="col_w" *ngFor="let item of relatedProducts">
-                    <a routerLink="/detail-product/{{item.id}}">
+                    <a href="/detail-product/{{item.id}}">
                         <div class="featured-product__img">
                             <img [src]="item.images" alt="" width="100%">
                             <div class="overlay">
@@ -87,7 +111,8 @@
                 <tab heading="Thêm Bình Luận">
                     <div class="save_comment">
                         <textarea id="content" rows="5" #content></textarea>
-                        <button (click)="saveComment(content.value)" class="btn btn-danger" style="font-size: 1.5rem;">Gửi Bình Luận</button>
+                        <button (click)="saveComment(content.value)" class="btn btn-danger"
+                            style="font-size: 1.5rem;">Gửi Bình Luận</button>
                     </div>
                 </tab>
             </tabset>

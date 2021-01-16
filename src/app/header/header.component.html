@@ -40,8 +40,8 @@
                     <button class="dropbtn"><i class="fa fa-list" aria-hidden="true"></i> LOẠI SẢN PHẨM <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a routerLink="/categories/0" routerLinkActive="active">Tất cả</a>
-                        <a routerLink="/categories/{{item.id}}" *ngFor="let item of listCategories" routerLinkActive="active">
+                        <a href="/categories/0" routerLinkActive="active">Tất cả</a>
+                        <a href="/categories/{{item.id}}" *ngFor="let item of listCategories" routerLinkActive="active">
                             {{item.name}}
                         </a>
                         <!-- <a href="">ÁO</a>
@@ -53,8 +53,8 @@
                 <li><a routerLink="/contact-us" routerLinkActive="active"><i class="fa fa-envelope"></i> LIÊN HỆ</a></li>
                 <li *ngIf="isLogged"><a routerLink="/account" routerLinkActive="active"><i class="fa fa-user" aria-hidden="true"></i> TÀI KHOẢN</a></li>
                 <li *ngIf="isLogged"><a routerLink="/your-order" routerLinkActive="active"><i class="fa fa-money" aria-hidden="true"></i> ĐƠN HÀNG</a></li>
-                <li *ngIf="isLogged" (click)="logout()"><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> ĐĂNG XUẤT</a></li>
-                <li *ngIf="!isLogged"><a routerLink="/login" routerLinkActive="active"><i class="fa fa-sign-in" aria-hidden="true"></i> ĐĂNG NHẬP</a></li>
+                <li *ngIf="isLogged" (click)="logout()"><a href="javascript:void(0)"><i class="fa fa-sign-out" aria-hidden="true"></i> ĐĂNG XUẤT</a></li>
+                <li *ngIf="!isLogged"><a routerLink="/login" routerLinkActive="active" (click)="luuLink()"><i class="fa fa-sign-in" aria-hidden="true"></i> ĐĂNG NHẬP</a></li>
                 <li *ngIf="!isLogged"><a routerLink="/register" routerLinkActive="active"><i class="fa fa-user-plus" aria-hidden="true"></i> ĐĂNG KÝ</a></li>
             </ul>
             <span class="icon" (click)="openNav()"><i class="fa fa-bars"></i></span>

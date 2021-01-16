@@ -22,6 +22,7 @@ import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CommentManagementComponent } from './comment-management/comment-management.component';
 import { OrderManagementComponent } from './order-management/order-management.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'categories/:id', component: CategoriesComponent},
   {path: 'shopping-cart', component: CartComponent},
   {path: 'your-order', component: OrdersComponent, canActivate: [AuthUserGuard]},
+  {path: 'order-confirmation', component: OrderConfirmationComponent, canActivate: [AuthUserGuard]},
   {path: 'detail-product/:id', component: DetailProductComponent},
   {path: 'search-products/:category/:keyword', component: SearchProductsComponent},
   {path: 'search-products/:category', component: SearchProductsComponent},

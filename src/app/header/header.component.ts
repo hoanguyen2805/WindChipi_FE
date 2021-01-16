@@ -38,7 +38,16 @@ export class HeaderComponent implements OnInit {
     document.getElementById("mySidenav").style.display = "none";
   }
   logout() {
+    // localStorage.setItem("url", this.router.url);
     this.authService.logout();
+    window.location.reload();
+    // const url: string = localStorage.getItem("url");
+    // if (url) {
+    //   this.router.navigate([url]);
+    // }
+    // else {
+    //   this.router.navigate(["/"]);
+    // }
   }
   onSubmitSearch() {
     const category = this.formSearch.value.category;
@@ -46,8 +55,11 @@ export class HeaderComponent implements OnInit {
     if (keyword) {
       this.router.navigate([`/search-products/${category}/${keyword}`]);
     }
-    else{
+    else {
       this.router.navigate([`/search-products/${category}`]);
     }
+  }
+  luuLink() {
+    localStorage.setItem("url", this.router.url);
   }
 }

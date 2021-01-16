@@ -1,0 +1,55 @@
+<app-header></app-header>
+<span *ngIf="message">
+    <h1 style="margin-top: 50px; text-align: center; font-size: 700;">THANH TOÁN</h1>
+    <div class="container_w">
+        <div class="row_w">
+            <div class="col_w">
+                <h2>Thông tin người nhận</h2>
+                <form (ngSubmit)="onSubmit()" [formGroup]="formInfo">
+                    <table class="table">
+                        <tr>
+                            <th>Họ và tên</th>
+                            <td>
+                                <input type="text" formControlName="full_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Số điện thoại</th>
+                            <td>
+                                <input type="text" formControlName="phone">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Địa chỉ</th>
+                            <td>
+                                <input type="text" formControlName="address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+    
+                            </td>
+                            <td>
+                                <button class="btn btn-danger pull-right" style="font-size: 1.5rem; padding: 10px; border-radius: 10px;">Đặt hàng</button>
+                            </td>
+                        </tr>
+    
+                    </table>
+                </form>
+            </div>
+            <div class="col_w">
+                <div class="info_product">
+                    <h2 style="font-size: 700;">Đơn hàng của bạn</h2>
+                    <p style="font-size: 600;">{{product.name}}</p>
+                    <p>Size <span class="pull-right">{{message.size}}</span></p>
+                    <p>Giá <span class="pull-right">{{product.price | number: '2.'}}đ</span></p>
+                    <p>Số lượng <span class="pull-right">{{message.so_luong}}</span></p>
+                    <p>
+                        Phí vận chuyển<span class="pull-right">{{shipping | number: '2.'}}đ</span>
+                    </p>
+                    <p>Tổng tiền <span class="pull-right">{{sum | number: '2.'}}đ</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</span>

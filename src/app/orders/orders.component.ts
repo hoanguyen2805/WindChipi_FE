@@ -1,31 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { OrderService } from '../service/order.servive';
-import { UsersService } from '../service/user.service';
 import { Orders } from '../models/order';
-import { Users } from '../models/user';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+  order: Orders = new Orders();
   orders: Orders[] = new Array();
-  user: Users = new Users();
-  constructor(private orderService: OrderService, private userService: UsersService) { }
+  modalRef: BsModalRef;
+  constructor(private orderService: OrderService,  private modalService: BsModalService) { }
 
   ngOnInit(): void {
-    this.getUserByToken();
-    this.getByUser();
+    this.getOrdersByUser();
   }
 
-  getByUser(){
-    this.orderService.getByUser().subscribe(
+  getOrdersByUser(){
+    this.orderService.getOrdersByUser().subscribe(
       res => this.orders = res
     )
   }
-  getUserByToken(){
-    this.userService.getUserByToken().subscribe(
-      res => this.user = res
-    )
+  openModalWithClass(template: TemplateRef<any>, order: Orders) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
+    this.order = order;
   }
 }

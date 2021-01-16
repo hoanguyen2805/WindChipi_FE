@@ -11,4 +11,9 @@ export class Orders{
 
     username: String;
     idUser: Number;
+
+    size: String;
+    full_name: String;
+    address: String;
+    phone: String;
 }

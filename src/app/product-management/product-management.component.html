@@ -23,10 +23,10 @@
                 <tr>
                     <th style="width: 6%;">ID</th>
                     <th style="width: 30%;">Tên</th>
+                    <th style="width: 10%">Loại sản phẩm</th>
                     <th style="width: 8%;">Giá</th>
                     <th style="width: 8%;">Đã bán</th>
                     <th style="width: 8%;">Còn lại</th>
-                    <th style="width: 30%;">Thông tin</th>
                     <th style="width: 10%;">Thao tác</th>
                 </tr>
             </thead>
@@ -38,6 +38,9 @@
                             {{item.name}}
                         </td>
                         <td>
+                            {{item.categories_id}}
+                        </td>
+                        <td>
                             {{item.price | number: '2.'}}
                         </td>
                         <td>
@@ -45,9 +48,6 @@
                         </td>
                         <td>
                             {{item.total}}
-                        </td>
-                        <td class="ten">
-                            {{item.describe}}
                         </td>
                         <td style="text-align: center;">
                             <a class="edit" title="Edit" data-toggle="tooltip" (click)="openModalWithClass2(templateUpdate, item)">

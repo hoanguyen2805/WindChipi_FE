@@ -11,29 +11,35 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   formSignIn: FormGroup;
   returnUrl: String;
-  constructor( private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.formSignIn = this.fb.group({
-      username: ['',Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     console.log(`Link ne ${this.returnUrl}`);
   }
-  onSubmit():void{
+  onSubmit(): void {
     this.authService.login(this.formSignIn.value).subscribe(
       res => {
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('roles', res.roles);
         console.log(`Đăng nhập thành công: ${JSON.stringify(res)}`);
-        if(this.authService.getRoles().includes("ROLE_ADMIN")){
+        if (this.authService.getRoles().includes("ROLE_ADMIN")) {
           this.router.navigate(['/admin']);
         }
-        else{
-          this.router.navigate([this.returnUrl]);
+        else {
+          const url: string = localStorage.getItem("url");
+          if (url) {
+            this.router.navigate([url]);
+          }
+          else{
+            this.router.navigate(["/"]);
+          }
         }
-        
+
       },
       err => {
         console.log(err);

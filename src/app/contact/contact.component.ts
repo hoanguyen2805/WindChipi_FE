@@ -36,9 +36,6 @@ export class ContactComponent implements OnInit {
     this.contactsService.createContact(newContact).subscribe(
       res=> {
         alert('Thành công');
-      },
-      err=>{
-        alert('Thất bại')
       }
     );
   }

@@ -8,7 +8,9 @@ import { Contacts } from '../models/contact';
 export class ContactService{
     constructor(private http: HttpClient, private router: Router){}
     createContact(contact: Contacts):Observable<any>{
-        return this.http.post<any>('http://localhost:8080/api/contacts/contact',contact);
+        return this.http.post<any>('http://localhost:8080/api/contacts/contact',contact).pipe(
+            catchError(err => of(null))
+        )
     }
 
     paging(page: number):Observable<Contacts[]>{

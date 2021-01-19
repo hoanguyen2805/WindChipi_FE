@@ -22,8 +22,9 @@
             <thead class="thead-light">
                 <tr>
                     <th style="width: 6%;">ID</th>
+                    <!-- <th style="width: 7%;">Ảnh</th> -->
                     <th style="width: 30%;">Tên</th>
-                    <th style="width: 10%">Loại sản phẩm</th>
+                    <!-- <th style="width: 10%">Loại sản phẩm</th> -->
                     <th style="width: 8%;">Giá</th>
                     <th style="width: 8%;">Đã bán</th>
                     <th style="width: 8%;">Còn lại</th>
@@ -34,12 +35,13 @@
                 <ng-template ngFor [ngForOf]="products" let-item>
                     <tr>
                         <td>{{item.id}}</td>
+                        <!-- <td><img [src]="item.images" alt="" width="40px"></td> -->
                         <td>
                             {{item.name}}
                         </td>
-                        <td>
+                        <!-- <td>
                             {{item.categories_id}}
-                        </td>
+                        </td> -->
                         <td>
                             {{item.price | number: '2.'}}
                         </td>
